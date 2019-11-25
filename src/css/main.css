@@ -1,0 +1,22 @@
+:root {
+    --mainFont: 'Poppins',  Verdana, sans-serif;
+    --mainLight: rgb(255,255,255);
+    --mainDark: rgb(45,58,75);
+    --detailDark: rgba(78,90,100,0.7);
+    --mainBackground: rgb(217,223, 228);
+    --sectionA: rgba(203,208,92,0.8);
+    --sectionB: rgba(203,79,74,0.8);
+    --sectionC: rgba(162,127,93,0.8);
+}
+
+* {
+	box-sizing: border-box;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--mainFont);
+}
