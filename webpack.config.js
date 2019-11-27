@@ -5,7 +5,7 @@ const TerserJSPlugin = require('terser-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 module.exports = {
-  entry: './src/index.js',
+  entry: ['@babel/polyfill', './src/index.js'],
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
@@ -27,7 +27,8 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env']
+            presets: ['@babel/preset-env'],
+            plugins: ['@babel/plugin-transform-async-to-generator']
           }
         }
       },
