@@ -1,0 +1,44 @@
+.listBox li {
+  padding: 2%;
+  border-bottom: 1px solid;
+  margin-bottom: 1%;
+}
+
+.listBox span {
+  display: block;
+  padding: 1%;
+  width: 50%;
+  margin: 0 auto;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: .4s;
+  color: var(--mainLight);
+}
+
+.listBox [data-list] span:hover {
+  background-color: var(--mainDark);
+}
+
+.listBox [data-list="mainMeal"] li {
+  border-bottom-color: var(--sectionA);
+}
+
+.listBox [data-list="mainMeal"] span {
+  background-color: var(--sectionA);
+}
+
+.listBox [data-list="dessert"] li {
+  border-bottom-color: var(--sectionB);
+}
+
+.listBox [data-list="dessert"] span {
+  background-color: var(--sectionB);
+}
+
+.listBox [data-list="cocktail"] li {
+  border-bottom-color: var(--detailDark);
+}
+
+.listBox [data-list="cocktail"] span {
+  background-color: var(--detailDark);
+}
