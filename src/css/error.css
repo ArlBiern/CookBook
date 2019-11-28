@@ -1,0 +1,37 @@
+[data-input] {
+    position: relative;
+}
+
+.error, .error span {
+    box-shadow: 0 0 5px var(--sectionB);
+}
+
+.error {
+    position: absolute;
+    background: var(--mainLight);
+    padding: 3%;
+    width: 150px;
+    height: auto;
+    opacity: 0.9;
+    border-radius: 5px;
+    z-index: 20;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.error span {
+    display: inline-block;
+    font-weight: 700;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    transform: rotate(45deg);
+    background-color: var(--sectionB);
+    cursor: pointer;
+    transition: .4s;
+}
+
+.error span:hover {
+    opacity: 0.7;
+}

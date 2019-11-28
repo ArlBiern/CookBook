@@ -1,0 +1,55 @@
+.selectBox ul {
+    width: 70%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .selectBox ul li {
+    cursor: pointer;
+    position: relative;
+    z-index: 9;
+  }
+  
+  .selectBox ul li:nth-child(odd) {
+    transform: perspective(100px) rotateX(15deg);
+  }
+  
+  .selectBox ul li:nth-child(even) {
+    transform: perspective(100px) rotateX(-15deg);
+  }
+  
+  [data-select="mainMeal"] li {
+    border-bottom: 1px solid var(--sectionA);
+  }
+  
+  [data-select="mainMeal"] li:nth-child(odd) {
+    background: linear-gradient(var(--sectionA), var(--mainLight));
+  }
+  
+  [data-select="mainMeal"] li:nth-child(even) {
+    background: linear-gradient(var(--mainLight), var(--sectionA));
+  }
+  
+  [data-select="dessert"] li {
+    border-bottom: 1px solid var(--sectionB);
+  }
+  
+  [data-select="dessert"] li:nth-child(odd) {
+    background: linear-gradient(var(--sectionB), var(--mainLight));
+  }
+  
+  [data-select="dessert"] li:nth-child(even) {
+    background: linear-gradient(var(--mainLight), var(--sectionB));
+  }
+  
+  [data-select="cocktail"] li {
+    border-bottom: 1px solid var(--detailDark);
+  }
+  
+  [data-select="cocktail"] li:nth-child(odd) {
+    background: linear-gradient(var(--detailDark), var(--mainLight));
+  }
+  
+  [data-select="cocktail"] li:nth-child(even) {
+    background: linear-gradient(var(--mainLight), var(--detailDark));
+  }

@@ -1,3 +1,104 @@
+/* --keyframes-- */
+@keyframes jello {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    transform: scale3d(1.5, 0.75, 1);
+  }
+  40% {
+    transform: scale3d(0.75, 1.5, 1);
+  }
+  50% {
+    transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    transform: scale3d(1.05, 0.95, 1);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: rotate(0deg);
+    transform-origin: 50% 50%;
+  }
+  10% {
+    transform: rotate(8deg);
+  }
+  20%,
+  40%,
+  60% {
+    transform: rotate(-10deg);
+  }
+  30%,
+  50%,
+  70% {
+    transform: rotate(10deg);
+  }
+  80% {
+    transform: rotate(-8deg);
+  }
+  90% {
+    transform: rotate(8deg);
+  }
+}
+
+@keyframes lid-shake {
+  0%,
+  100% {
+    transform: rotate(0deg);
+    transform-origin: 0 50%;
+  }
+  10% {
+    transform: rotate(1deg);
+  }
+  20%,
+  40%,
+  60% {
+    transform: rotate(-2deg);
+  }
+  30%,
+  50%,
+  70% {
+    transform: rotate(2deg);
+  }
+  80% {
+    transform: rotate(-1deg);
+  }
+  90% {
+    transform: rotate(1deg);
+  }
+}
+
+@keyframes steam {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 7px);
+  }
+  40% {
+    transform: translate(-1px, -5px);
+  }
+  60% {
+    transform: translate(1px, 6px);
+  }
+  80% {
+    transform: translate(2px, -4px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+/* --General-- */
 :root {
     --mainFont: 'Poppins',  Verdana, sans-serif;
     --mainLight: rgb(255,255,255);
@@ -19,4 +120,514 @@
 
 body {
     font-family: var(--mainFont);
+    background-image: linear-gradient(90deg, var(--mainBackground), var(--mainLight), var(--mainBackground));
+}
+
+.board {
+  width: 60%;
+  margin: 6% auto;
+  padding-top: 7%;
+  overflow: visible;
+  background-color: var(--mainDark);
+  box-shadow: 0 0 20px var(--detailDark);
+}
+
+section {
+  overflow: visible;
+  margin-bottom: 15%;
+  position: relative;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  transition: .6s;
+  font-size: 14px;
+}
+
+.overflow_div {
+  width: 120%;
+  min-height: 50vh;
+  position: relative;
+  padding: 2%;
+  margin-bottom: 5%;
+}
+
+.left {
+  left: -12%;
+}
+
+.right {
+  left: -7%;
+}
+
+.sectionA {
+  background-color: var(--sectionA);
+}
+
+.sectionB {
+  background-color: var(--sectionB);
+}
+
+.sectionC {
+  background-color: var(--sectionC);
+}
+
+.detail {
+  background-color: var(--detailDark);
+}
+
+h1::before, h1::after, header::before, section::before, footer a::before {
+  content: "";
+  position: absolute;
+  background-size: cover;
+}
+
+section::before {
+  z-index: -1;
+}
+
+.mainButton {
+  border: none;
+  outline: none;
+  padding: 2%;
+  margin: 4%;
+  border-radius: 10px;
+  color: var(--mainLight);
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: .6s;
+  cursor: pointer;
+}
+
+.sliderSmall, .blockBox {
+  width: 90%;
+  min-height: 40vh;
+  margin: 1%;
+  background: var(--mainLight);
+  box-shadow: 0 0 10px var(--detailDark);
+}
+
+.blockBox {
+  padding: 3%;
+}
+
+.mainButton:hover {
+  background-color: var(--mainDark);
+}
+
+::-webkit-scrollbar {
+	width: 15px;
+}
+::-webkit-scrollbar-track {
+  background: var(--mainBackground);
+  opacity: 0.1;
+  border: 1px solid var(--mainDark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--detailDark);
+}
+::-webkit-scrollbar-thumb:hover {
+	background: var(--mainDark);
+}
+
+.gridBox {
+  display: grid;
+}
+
+/* --Header-- */
+header {
+  position: relative;
+  color: var(--mainLight);
+  padding-bottom: 4%;
+  margin-bottom: 4%;
+}
+
+header::before {
+  width: 224px;
+  height: 329px;
+  top: 0;
+  left: -23%;
+  z-index: -1;
+  background-image: url("../assets/plate.png");
+}
+
+h1 {
+  font-size: 64px;
+  text-align: center;
+  position: relative;
+  cursor: default;
+  text-shadow: 0 0 4px var(--mainBackground);
+  padding: 2%;
+  margin-bottom: 3%;
+}
+
+h1 span {
+  display: inline-block;
+}
+
+h1 span:hover {
+  animation: jello 0.9s ease-in-out both;
+}
+
+h1:hover::after {
+  animation: shake 0.9s ease both;
+}
+
+h1::before, h1::after {
+  right: 31%;
+}
+
+h1::before {
+  top: -30px;
+  width: 80px;
+  height: 70px;
+  background-image: url("../assets/logo.png");
+}
+
+h1::after {
+  bottom: 10px;
+  width: 90px;
+  height: 25px;
+  background-image: url("../assets/mustache.png");
+}
+
+header p {
+  text-align: right;
+  width: 90%;
+  margin-bottom: 3%;
+  padding: 6%;
+  position: relative;
+  right: -18%;
+  background-color: var(--detailDark);
+}
+
+header p q {
+  display: block;
+  padding: 5px;
+  font-style: italic;
+}
+
+/* --slider section-- */
+.sliderBox::before {
+  width: 182px;
+  height: 315px;
+  top: 25%;
+  right: -20%;
+  background-image: url("../assets/oregano.png");
+}
+
+.sliderSmall {
+  padding-top: 2%;
+}
+
+.glide .glide__arrow {
+  color: var(--sectionA);
+  border-color: var(--sectionA);
+}
+
+.glide .glide__bullet {
+  background-color: var(--sectionA);
+  width: 15px;
+  height: 15px;
+  box-shadow: 0 0 5px var(--detailDark);
+}
+
+.sliderSmall img {
+  height: 25vh;
+  width: auto;
+}
+
+.inlineBox {
+  text-align: right;
+  width: 50%;
+  float: right;
+}
+
+.slider .mainButton {
+  margin-right: 0;
+}
+
+.slide {
+  margin: 0 auto;
+  width: 70%;
+  height: 30vh;
+  padding: 5px;
+}
+
+/* --curosity section-- */
+.curosityBox::before {
+  width: 180px;
+  height: 345px;
+  top: 25%;
+  left: -22%;
+  background-image: url("../assets/strawberries.png");
+}
+
+.curosityBox .blockBox, .listBox .blockBox {
+  margin-left: 7%;
+}
+
+.randomCurosityButton {
+  margin: 2% 0 0;
+}
+
+/* --find section-- */
+.find {
+  min-height: 70vh;
+}
+
+.findBox::before {
+  width: 180px;
+  height: 435px;
+  top: 20%;
+  right: -22%;
+  background-image: url("../assets/grape.png");
+}
+
+.findBox .gridBox {
+  grid-gap: 5px;
+}
+
+.findBox .gridBox {
+  grid-template: auto / 3fr 3fr 4fr;
+}
+
+.findBox h2 {
+  text-align: center;
+  margin-bottom: 3%;
+}
+
+/* select box */
+.selectBox {
+  text-align: center;
+}
+
+.selectBox input {
+  padding: 4px;
+  font-family: var(--mainFont);
+  color: var(--mainDark);
+  outline: 3px solid var(--sectionC); 
+  position: relative;
+  z-index: 10;
+}
+
+.selectBox [id="mainMeal"]:focus {
+  outline: 3px solid var(--sectionA);  
+}
+
+.selectBox [id="dessert"]:focus {
+  outline: 3px solid var(--sectionB);  
+}
+
+.selectBox [id="cocktail"]:focus {
+  outline: 3px solid var(--detailDark);  
+}
+
+.selectBox .mainButton {
+  display: block;
+  margin: 5% auto;
+}
+
+/* card box */
+.cardBox {
+  border: 1px dashed var(--mainDark);
+  border-radius: 10px;
+}
+
+/* pot box */
+.pot {
+  position: relative;
+}
+
+.pot img {
+  display: block;
+  height: auto;
+}
+
+.moveingPot, .search {
+  display: inline-block;
+  position: absolute;
+}
+
+.search {
+  width: 40%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-60%, -50%);
+}
+
+.pot img:first-child {
+  top: -50%;
+  left: 30%;
+  width: 65%;
+  animation: steam 3s ease-in-out infinite both;
+}
+
+.pot img:nth-child(2) {
+  top: -37%;
+  left: 10%;
+  width: 80%;
+  animation: lid-shake 2.5s ease-out infinite both;
+}
+
+.pot img:nth-child(3) {
+  margin-top: 30%;
+  width: 100%;
+}
+
+.potBox .potTable {
+  grid-template: auto / repeat(3, 1fr);
+  padding-top: 4%;
+  font-size: 14px;
+}
+
+.potTable ul {
+  padding: 5% 1%;
+  font-weight: 700;
+}
+
+.potTable ul li {
+  padding: 2%;
+}
+
+.potTable ul li:first-child {
+  text-decoration: underline;
+  margin-bottom: 5px;
+}
+
+.potBox .clear {
+  display: block;
+  width: 60%;
+  margin: 4% auto 2%;
+}
+
+/* --list section-- */
+.listBox::before {
+  width: 180px;
+  height: 300px;
+  top: 25%;
+  left: -21%;
+  background-image: url("../assets/mango.png");
+}
+
+.listBox {
+  text-align: center;
+}
+
+.listBox h2 {
+  border-bottom: 2px solid var(--sectionB);
+}
+
+.listBox h2, .listBox h3, .listBox span {
+  box-shadow: 0 0 4px var(--detailDark);
+}
+
+.listBox h2, .listBox h3 {
+  margin-bottom: 2%;
+}
+
+.listBox .gridBox {
+  grid-template: auto / repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+/* --selected section-- */
+.selectedBox::before {
+  width: 180px;
+  height: 482px;
+  top: 15%;
+  right: -21%;
+  background-image: url("../assets/mint.png");
+}
+
+[data-selected]::-webkit-scrollbar {
+	width: 10px;
+}
+
+[data-selected]::-webkit-scrollbar-thumb {
+  background: var(--sectionA);
+}
+
+.selectedBox .gridBox {
+  grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+  grid-gap: 20px;
+}
+
+.selectedBox h2 {
+  text-align: center;
+  border-bottom: 2px solid var(--sectionA)
+}
+
+.selectedBox h3, .selectedBox h2 {
+  margin-bottom: 2%;
+}
+
+.selectedBox ul {
+  list-style-type: square;
+  list-style-position: inside;
+  margin-bottom: 4%;
+}
+
+.selectedBox [data-selected] {
+  padding: 4%;
+  height: 35vh;
+  overflow: auto;
+}
+
+[data-selected="mainMeal"] {
+  box-shadow: inset 0 0 15px var(--sectionA);
+}
+
+[data-selected="dessert"] {
+  box-shadow: inset 0 0 15px var(--sectionB);
+}
+
+[data-selected="cocktail"] {
+  box-shadow: inset 0 0 15px var(--detailDark);
+}
+
+[data-selected="img"] {
+  box-shadow: inset 0 0 15px var(--mainDark);
+}
+
+/* --footer-- */
+footer {
+  padding: 5% 3% 3%;
+  background-color: var(--detailDark);
+  width: 80%;
+  color: var(--mainLight);
+  position: relative;
+  left: -5%;
+  text-align: center;
+  box-shadow: 0 0 6px var(--mainLight);
+}
+
+footer a {
+  color: var(--mainLight);
+  padding: 5px;
+  position: relative;
+  z-index: 2;
+}
+
+footer a::before {
+  width: 31px;
+  height: 30px;
+  top: -70%;
+  left: 50%;
+  transform: translate(-50%);
+  z-index: 1;
+  background-image: url("../assets/git.png");
+}
+
+footer a:first-child {
+  margin-left: 15px;
+}
+
+footer a:hover {
+  text-shadow: 0 0 10px var(--sectionB);
+  color: var(--sectionA)
 }
