@@ -2,6 +2,11 @@
   "name": "cookbook",
   "version": "1.0.0",
   "description": "CodersCamp-Project3",
+  "homepage": "https://github.com/dobrzyckahanna/CookBook",
+  "respository": {
+    "type": "git",
+    "url": "https://github.com/dobrzyckahanna/CookBook.git"
+  },
   "main": "index.js",
   "scripts": {
     "start": "npm run dev && npm run serv",
@@ -10,7 +15,20 @@
     "build": "webpack --mode=production",
     "test:html": "html-validate src/index.html"
   },
-  "author": "",
+  "contributors": [
+    {
+      "name": "freefrogs",
+      "url": "https://github.com/freefrogs"
+    },
+    {
+      "name": "ireshka",
+      "url": "https://github.com/ireshka"
+    },
+    {
+      "name": "Kombajn27",
+      "url": "https://github.com/Kombajn27"
+    }
+  ],
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.7.2",
