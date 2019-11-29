@@ -108,12 +108,19 @@
                                 <div class="selectBox">
                                     <div data-input="mainMeal">
                                         <!--error will be remove after adding  the functionality of the input-->
-                                        <div class="error">Unknown ingredient <span>+</span></div>
+                                        <!-- <div class="error">Unknown ingredient <span>+</span></div> -->
                                         <label for="mainMeal">Main course ingredient</label>
                                         <input id="mainMeal" type="text"> <!--from Recipe Puppy-->
                                         <ul data-select="mainMeal">
+                                            <li>Onions</li>
+                                            <!-- <li>Red onions</li>
+                                            <li>Spiced onions</li>
+                                            <li>Rattered onions</li>
+                                            <li>Rattered onions</li>
+                                            <li>Rattered onions</li>
+                                            <li>Rattered onions</li> -->
                                         </ul>
-                                        <button class="mainButton sectionC">add</button> <!--creates card-->
+                                        <button class="mainButton sectionC" disabled>add</button> <!--creates card-->
                                     </div>
                                     <div data-input="dessert">
                                         <label for="dessert">Dessert ingredient</label>
@@ -121,15 +128,24 @@
                                         <ul data-select="dessert">
                                             <!--will be remove after adding  the functionality of the input-->
                                             <li>item</li>
+                                            <!-- <li>item</li>
                                             <li>item</li>
+                                            <li>item</li>
+                                            <li>item</li>
+                                            <li>item</li> -->
                                         </ul>
-                                        <button class="mainButton sectionC">add</button> <!--creates card-->
+                                        <button class="mainButton sectionC" disabled>add</button> <!--creates card-->
                                     </div>
-                                    <div>
+                                    <div data-input="cocktail">
                                         <label for="cocktail">Cocktail ingredient</label>
-                                        <input id="cocktail" type="text"> <!--from TheCoctailDB-->
-                                        <ul data-select="cocktail"></ul>
-                                        <button class="mainButton sectionC">add</button> <!--creates card-->
+                                        <input id="cocktail" type="text"><!--from TheCoctailDB-->
+                                        <ul data-select="cocktail" class="hidden">
+                                            <li>Onions</li>
+                                            <li>Red onions</li>
+                                            <li>Spiced onions</li>
+                                            <li>Rattered onions</li>
+                                        </ul>
+                                        <button class="mainButton sectionC" disabled>add</button> <!--creates card-->
                                     </div>
                                 </div>
                                 <div class="cardBox dropzone">
