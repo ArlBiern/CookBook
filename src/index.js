@@ -9,21 +9,20 @@ import './css/utilities.css'
 import './css/glide.core.min.css'
 import './css/glide.theme.min.css'
 import Glide from '@glidejs/glide'
+import * as utili from './js/utilities'
 import * as ing from './js/ingredient-inputs'
 
 const pageLoad = () => {
-  // const addIngredientButtons = document.querySelectorAll('.selectBox button')
-  // const ingredientInputs = document.querySelectorAll('selectBox input')
-  // const hintLists = document.querySelectorAll('.selectBox ul')
   const selectBox = document.querySelector('.selectBox')
   const ingredientsInputs = document.querySelectorAll('.selectBox input')
+  const errorCloseButton = document.querySelector('.error-close-button')
 
   const preparePage = () => {
     new Glide('.glide', { autoplay: 4000 }).mount()
     // for DEBUGGING
     const buttons = [...document.querySelectorAll('.selectBox button')]
     buttons.forEach((b) => {
-      console.log('zmieniam button')
+      console.log('I turn buttons on')
       b.disabled = false
     })
   }
@@ -39,6 +38,7 @@ const pageLoad = () => {
   ingredientsInputs.forEach((i) => {
     i.addEventListener('focus', ing.checkInput)
   })
+  errorCloseButton.addEventListener('click', utili.hideWarning)
 }
 
 document.addEventListener('DOMContentLoaded', pageLoad)
