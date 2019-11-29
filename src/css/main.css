@@ -100,27 +100,27 @@
 
 /* --General-- */
 :root {
-    --mainFont: 'Poppins',  Verdana, sans-serif;
-    --mainLight: rgb(255,255,255);
-    --mainDark: rgb(45,58,75);
-    --detailDark: rgba(78,90,100,0.7);
-    --mainBackground: rgb(217,223, 228);
-    --sectionA: rgba(203,208,92,0.8);
-    --sectionB: rgba(203,79,74,0.8);
-    --sectionC: rgba(162,127,93,0.8);
+  --mainFont: 'Poppins',  Verdana, sans-serif;
+  --mainLight: rgb(255,255,255);
+  --mainDark: rgb(45,58,75);
+  --detailDark: rgba(78,90,100,0.7);
+  --mainBackground: rgb(217,223, 228);
+  --sectionA: rgba(203,208,92,0.8);
+  --sectionB: rgba(203,79,74,0.8);
+  --sectionC: rgba(162,127,93,0.8);
 }
 
 * {
-	box-sizing: border-box;
-	-webkit-tap-highlight-color: rgba(0,0,0,0);
-    -webkit-tap-highlight-color: transparent;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: transparent;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    font-family: var(--mainFont);
-    background-image: linear-gradient(90deg, var(--mainBackground), var(--mainLight), var(--mainBackground));
+  font-family: var(--mainFont);
+  background-image: linear-gradient(90deg, var(--mainBackground), var(--mainLight), var(--mainBackground));
 }
 
 .board {
@@ -203,6 +203,10 @@ section::before {
   cursor: pointer;
 }
 
+.mainButton:disabled {
+  opacity: 0.7;
+}
+
 .sliderSmall, .blockBox {
   width: 90%;
   min-height: 40vh;
@@ -219,8 +223,12 @@ section::before {
   background-color: var(--mainDark);
 }
 
+.sectionC .mainButton:disabled:hover {
+  background-color: var(--sectionC);
+}
+
 ::-webkit-scrollbar {
-	width: 15px;
+  width: 15px;
 }
 ::-webkit-scrollbar-track {
   background: var(--mainBackground);
@@ -231,7 +239,7 @@ section::before {
   background: var(--detailDark);
 }
 ::-webkit-scrollbar-thumb:hover {
-	background: var(--mainDark);
+  background: var(--mainDark);
 }
 
 .gridBox {
@@ -545,7 +553,7 @@ header p q {
 }
 
 [data-selected]::-webkit-scrollbar {
-	width: 10px;
+  width: 10px;
 }
 
 [data-selected]::-webkit-scrollbar-thumb {
