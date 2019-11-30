@@ -128,6 +128,7 @@ body {
 }
 
 .board {
+  max-width: 960px;
   width: 60%;
   margin: 6% auto;
   padding-top: 7%;
@@ -154,6 +155,7 @@ a {
 
 .overflow_div {
   width: 120%;
+  max-width: 1110px;
   min-height: 50vh;
   position: relative;
   padding: 2%;
@@ -365,6 +367,7 @@ header p q {
 .inlineBox {
   text-align: right;
   width: 50%;
+  padding-bottom: 2%;
   float: right;
 }
 
@@ -375,8 +378,12 @@ header p q {
 .slide {
   margin: 0 auto;
   width: 70%;
-  height: 30vh;
+  min-height: 30vh;
   padding: 5px;
+}
+
+.glide--slider {
+  padding: 2% 1% 10%;
 }
 
 /* --curosity section-- */
@@ -500,7 +507,7 @@ header p q {
   width: 100%;
 }
 
-.potBox .potTable {
+.findBox .potBox .potTable {
   grid-template: auto / repeat(3, 1fr);
   padding-top: 4%;
   font-size: 14px;
