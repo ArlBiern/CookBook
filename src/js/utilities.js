@@ -1,10 +1,21 @@
-const showElement = (el) => el.classList.remove('hidden')
-
-const hideElement = (el) => el.classList.add('hidden')
+const isHidden = (e, boolean) => e.classList.toggle('hidden', boolean)
 
 const hideWarning = (e) => {
   const warning = e.target.parentElement
-  hideElement(warning)
+  isHidden(warning, true)
 }
 
-export { showElement, hideElement, hideWarning }
+const clearElement = (el) => {
+  while (el.firstChild) {
+    el.firstChild.remove()
+  }
+}
+
+const capitalizeFirstLetter = (string) => string[0].toUpperCase() + string.slice(1).toLowerCase()
+
+export {
+  hideWarning,
+  clearElement,
+  isHidden,
+  capitalizeFirstLetter
+}
