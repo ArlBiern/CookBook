@@ -10,3 +10,17 @@
   font-weight: 400;
   margin-top: 2%;
 }
+
+.visibleMeal {
+  height: 50vh;
+  overflow: auto;
+  padding: 2%;
+}
+
+.visibleMeal a {
+  float: right;
+}
+
+.visibleMeal::-webkit-scrollbar-thumb {
+	background: var(--sectionA);
+}
