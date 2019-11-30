@@ -12,6 +12,7 @@ import Glide from '@glidejs/glide'
 import * as utili from './js/utilities'
 import * as ing from './js/ingredient-inputs'
 import showRandomDrink from './js/random-drink.js'
+import './js/random-meal.js'
 
 const pageLoad = () => {
   const selectBox = document.querySelector('.selectBox')

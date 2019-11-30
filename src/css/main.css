@@ -118,6 +118,10 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--mainFont);
   background-image: linear-gradient(90deg, var(--mainBackground), var(--mainLight), var(--mainBackground));
@@ -334,6 +338,11 @@ header p q {
 
 .sliderSmall {
   padding-top: 2%;
+}
+
+.sliderSmall a {
+  color: var(--mainLight);
+  font-weight: 400;
 }
 
 .glide .glide__arrow {
