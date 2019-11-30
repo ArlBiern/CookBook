@@ -246,6 +246,10 @@ section::before {
   display: grid;
 }
 
+.selectedBox .hiddenBox {
+  display: none;
+}
+
 /* --Header-- */
 header {
   position: relative;
@@ -418,21 +422,21 @@ header p q {
   padding: 4px;
   font-family: var(--mainFont);
   color: var(--mainDark);
-  outline: 3px solid var(--sectionC); 
+  outline: 3px solid var(--sectionC);
   position: relative;
   z-index: 10;
 }
 
 .selectBox [id="mainMeal"]:focus {
-  outline: 3px solid var(--sectionA);  
+  outline: 3px solid var(--sectionA);
 }
 
 .selectBox [id="dessert"]:focus {
-  outline: 3px solid var(--sectionB);  
+  outline: 3px solid var(--sectionB);
 }
 
 .selectBox [id="cocktail"]:focus {
-  outline: 3px solid var(--detailDark);  
+  outline: 3px solid var(--detailDark);
 }
 
 .selectBox .mainButton {
