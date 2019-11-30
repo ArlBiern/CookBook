@@ -11,6 +11,7 @@ import './css/glide.theme.min.css'
 import Glide from '@glidejs/glide'
 import * as utili from './js/utilities'
 import * as ing from './js/ingredient-inputs'
+import showRandomDrink from './js/random-drink.js'
 
 const pageLoad = () => {
   const selectBox = document.querySelector('.selectBox')
@@ -35,6 +36,10 @@ const pageLoad = () => {
     i.addEventListener('focus', ing.checkInput)
   })
   errorCloseButton.addEventListener('click', utili.hideWarning)
+
+  // Get and show random drink
+  showRandomDrink('.visibleDrink')
+
 }
 
 document.addEventListener('DOMContentLoaded', pageLoad)

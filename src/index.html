@@ -41,7 +41,7 @@
                                                     <p>Thirsty?</p>
                                                     <p>If you're looking for inspiration...</p>
                                                     <p>Click the button</p>
-                                                    <button class="mainButton sectionA dayMealButton">see details</button>
+                                                    <a href="#chosen" class="mainButton sectionA randomDrinkButton">See a drink</a>
                                                 </div>
                                             </div>
                                         </li>
@@ -80,7 +80,7 @@
                                     <button class="glide__bullet" data-glide-dir="=1"></button>
                                     <button class="glide__bullet" data-glide-dir="=2"></button>
                                 </div>
-                            </div>                            
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -167,7 +167,7 @@
                     </div>
                 </section>
                 <section class="listBox">
-                    <div class="overflow_div right sectionB">    
+                    <div class="overflow_div right sectionB">
                         <div class="blockBox">
                             <h2>Chef suggestions</h2>
                             <div class="gridBox">
@@ -205,11 +205,14 @@
                         </div>
                     </div>
                 </section>
-                <section class="selectedBox">
+                <section class="selectedBox" id="chosen">
                     <div class="overflow_div left selected sectionA">
                         <div class="blockBox">
                             <h2>Selected recipes</h2>
-                            <div class="gridBox">
+                            <div class="visiblePan"></div>
+                            <div class="hiddenBox visibleMeal"></div>
+                            <div class="hiddenBox visibleDrink"></div>
+                            <div class="hiddenBox gridBox">
                                 <div data-selected="mainMeal">
                                     <!--will be removed after adding the functionality of the show chosen main course-->
                                     <h3>Lorem, ipsum.</h3>
