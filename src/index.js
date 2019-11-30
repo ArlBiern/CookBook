@@ -6,6 +6,7 @@ import './css/list.css'
 import './css/error.css'
 import './css/dropdown.css'
 import './css/utilities.css'
+import './css/pan-anim.css'
 import './css/glide.core.min.css'
 import './css/glide.theme.min.css'
 import './css/rwd.css'
@@ -13,6 +14,7 @@ import Glide from '@glidejs/glide'
 import * as utili from './js/utilities'
 import * as ing from './js/ingredient-inputs'
 import showRandomDrink from './js/random-drink.js'
+import { createFlame, createPan } from './js/pan-anim'
 import './js/random-meal.js'
 
 const pageLoad = () => {
@@ -28,6 +30,14 @@ const pageLoad = () => {
     //   console.log('I turn buttons on')
     //   b.disabled = false
     // })
+
+    // Get and show random drink
+    showRandomDrink('.visibleDrink')
+
+    // Creating pan animation
+    const animCnt = document.querySelector('.visiblePan')
+    createPan(animCnt, '250px')
+    createFlame(animCnt, 1, '100px')
   }
 
   preparePage()
@@ -38,10 +48,6 @@ const pageLoad = () => {
     i.addEventListener('focus', ing.checkInput)
   })
   errorCloseButton.addEventListener('click', utili.hideWarning)
-
-  // Get and show random drink
-  showRandomDrink('.visibleDrink')
-
 }
 
 document.addEventListener('DOMContentLoaded', pageLoad)

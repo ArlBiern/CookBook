@@ -125,6 +125,7 @@ html {
 body {
   font-family: var(--mainFont);
   background-image: linear-gradient(90deg, var(--mainBackground), var(--mainLight), var(--mainBackground));
+  min-width: 320px;
 }
 
 .board {
@@ -476,9 +477,10 @@ header p q {
   height: auto;
 }
 
-.moveingPot, .search {
+.movingPot, .search {
   display: inline-block;
   position: absolute;
+  text-align: center;
 }
 
 .search {
