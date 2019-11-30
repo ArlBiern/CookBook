@@ -20,21 +20,17 @@ const pageLoad = () => {
   const preparePage = () => {
     new Glide('.glide', { autoplay: 4000 }).mount()
     // for DEBUGGING
-    const buttons = [...document.querySelectorAll('.selectBox button')]
-    buttons.forEach((b) => {
-      console.log('I turn buttons on')
-      b.disabled = false
-    })
+    // const buttons = [...document.querySelectorAll('.selectBox button')]
+    // buttons.forEach((b) => {
+    //   console.log('I turn buttons on')
+    //   b.disabled = false
+    // })
   }
 
   preparePage()
+  document.addEventListener('click', ing.hideShowedHintLists)
   selectBox.addEventListener('click', ing.selectBoxClicked)
-  selectBox.addEventListener('click', ing.selectBoxClicked)
-  selectBox.addEventListener('click', ing.selectBoxClicked)
-  selectBox.addEventListener('input', ing.displayHints)
-  ingredientsInputs.forEach((i) => {
-    i.addEventListener('blur', ing.hideHints)
-  })
+  selectBox.addEventListener('input', ing.checkForHints)
   ingredientsInputs.forEach((i) => {
     i.addEventListener('focus', ing.checkInput)
   })
