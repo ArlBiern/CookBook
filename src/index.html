@@ -107,36 +107,29 @@
                             <div class="gridBox">
                                 <div class="selectBox">
                                     <div data-input="mainMeal">
-                                        <!--error will be remove after adding  the functionality of the input-->
-                                        <div class="error">Unknown ingredient <span>+</span></div>
+                                        <div class="error hidden"><span class="error-message"></span ><span class="error-close-button">+</span></div>
                                         <label for="mainMeal">Main course ingredient</label>
                                         <input id="mainMeal" type="text"> <!--from Recipe Puppy-->
-                                        <ul data-select="mainMeal">
+                                        <ul data-select="mainMeal" class="hidden">
                                         </ul>
-                                        <button class="mainButton sectionC">add</button> <!--creates card-->
+                                        <button class="mainButton sectionC" disabled>add</button> <!--creates card-->
                                     </div>
                                     <div data-input="dessert">
                                         <label for="dessert">Dessert ingredient</label>
                                         <input id="dessert" type="text"> <!--from dessert category from TheMealDB-->
-                                        <ul data-select="dessert">
-                                            <!--will be remove after adding  the functionality of the input-->
-                                            <li>item</li>
-                                            <li>item</li>
+                                        <ul data-select="dessert" class="hidden">
                                         </ul>
-                                        <button class="mainButton sectionC">add</button> <!--creates card-->
+                                        <button class="mainButton sectionC" disabled>add</button> <!--creates card-->
                                     </div>
-                                    <div>
+                                    <div data-input="cocktail">
                                         <label for="cocktail">Cocktail ingredient</label>
-                                        <input id="cocktail" type="text"> <!--from TheCoctailDB-->
-                                        <ul data-select="cocktail"></ul>
-                                        <button class="mainButton sectionC">add</button> <!--creates card-->
+                                        <input id="cocktail" type="text"><!--from TheCoctailDB-->
+                                        <ul data-select="cocktail" class="hidden">
+                                        </ul>
+                                        <button class="mainButton sectionC" disabled>add</button> <!--creates card-->
                                     </div>
                                 </div>
                                 <div class="cardBox dropzone">
-                                    <!--will be removed after adding the functionality of the card-->
-                                    <div data-card="mainMeal" draggable="true" class="card">lorem m</div> <!--card for main meal ingredient-->
-                                    <div data-card="dessert" draggable="true" class="card">lorem d</div> <!--card for dessert ingredient-->
-                                    <div data-card="cocktail" draggable="true" class="card">lorem c</div> <!--card for cocktail ingredient-->
                                 </div>
                                 <div class="potBox">
                                     <div class="pot dropzone">
