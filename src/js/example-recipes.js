@@ -62,7 +62,7 @@ const renderPuppyShortRecipe = (mealArray, dishType) => {
       const innerText = el.title.trim()
       listItem.dataset.link = el.href
       listItem.dataset.ingredients = el.ingredients
-      listItem.innerHTML = `${innerText}<a href="#chosen">show</a>`
+      listItem.innerHTML = `<span>${innerText}</span><a href="#chosen">show</a>`
       selectedList.appendChild(listItem)
     })
   }
@@ -79,7 +79,7 @@ const renderDbBaseShortRecipe = (mealArray, dishType) => {
       const listItem = document.createElement('li')
       const innerText = dishType === 'dessert' ? el.strMeal.trim() : el.strDrink.trim()
       listItem.dataset.recipeid = dishType === 'dessert' ? el.idMeal : el.idDrink
-      listItem.innerHTML = `${innerText}<a href="#chosen">show</a>`
+      listItem.innerHTML = `<span>${innerText}</span><a href="#chosen">show</a>`
       selectedList.appendChild(listItem)
     })
   }
