@@ -22,10 +22,16 @@ const randomFewElements = (array, limit) => {
   return elementsArray
 }
 
+const getValueFromCard = (card) => {
+  const cardValue = card.innerText.slice(0, -1).toLowerCase().trim()
+  return cardValue
+}
+
 export {
   hideWarning,
   clearElement,
   isHidden,
   capitalizeFirstLetter,
-  randomFewElements
+  randomFewElements,
+  getValueFromCard
 }

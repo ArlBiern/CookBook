@@ -3,16 +3,11 @@ import * as utili from './utilities'
 const potTable = document.querySelector('.potTable')
 const allTables = document.querySelectorAll('[data-box]')
 
-const getValueFromCard = (card) => {
-  const cardValue = card.innerText.slice(0, -1).toLowerCase()
-  return cardValue
-}
-
 const getIngredient = async (dish) => {
   const table = potTable.querySelector(`[data-box="${dish}"]`)
   const tableElements = table.querySelectorAll('li.item')
   const tableIngredients = []
-  tableElements.forEach((el) => tableIngredients.push(getValueFromCard(el)))
+  tableElements.forEach((el) => tableIngredients.push(utili.getValueFromCard(el)))
   return tableIngredients
 }
 
