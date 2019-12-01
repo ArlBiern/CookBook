@@ -115,6 +115,8 @@ const showExampleRecipes = () => {
     return false
   }
   renderExampleRecipes()
+  const hash = 'sugestions'
+  location.hash = `#${hash}`
 }
 
 export default showExampleRecipes
