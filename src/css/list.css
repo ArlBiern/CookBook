@@ -4,7 +4,7 @@
   margin-bottom: 1%;
 }
 
-.listBox span {
+.listBox a {
   display: block;
   padding: 1%;
   width: 50%;
@@ -15,7 +15,7 @@
   color: var(--mainLight);
 }
 
-.listBox [data-list] span:hover {
+.listBox [data-list] a:hover {
   background-color: var(--mainDark);
 }
 
@@ -23,7 +23,7 @@
   border-bottom-color: var(--sectionA);
 }
 
-.listBox [data-list="mainMeal"] span {
+.listBox [data-list="mainMeal"] a {
   background-color: var(--sectionA);
 }
 
@@ -31,7 +31,7 @@
   border-bottom-color: var(--sectionB);
 }
 
-.listBox [data-list="dessert"] span {
+.listBox [data-list="dessert"] a {
   background-color: var(--sectionB);
 }
 
@@ -39,6 +39,6 @@
   border-bottom-color: var(--detailDark);
 }
 
-.listBox [data-list="cocktail"] span {
+.listBox [data-list="cocktail"] a {
   background-color: var(--detailDark);
 }
