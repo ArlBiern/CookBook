@@ -59,7 +59,7 @@ const renderPuppyShortRecipe = (mealArray, dishType) => {
     mealArray.forEach((el) => {
       const selectedList = document.querySelector(`[data-list=${dishType}]`)
       const listItem = document.createElement('li')
-      const innerText = el.title.trim()
+      const innerText = el.title.replace('Recipe', '').trim()
       listItem.dataset.link = el.href
       listItem.dataset.ingredients = el.ingredients
       listItem.innerHTML = `<span>${innerText}</span><a href="#chosen">show</a>`
