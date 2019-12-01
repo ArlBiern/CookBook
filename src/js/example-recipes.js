@@ -2,6 +2,7 @@ import { getMainMealRecipes, getDessertRecipes, getCocktailRecipes } from './fet
 import * as utili from './utilities'
 const potTable = document.querySelector('.potTable')
 const allTables = document.querySelectorAll('[data-box]')
+const suggestionsBox = document.querySelector('#suggestions')
 
 const getIngredient = async (dish) => {
   const table = potTable.querySelector(`[data-box="${dish}"]`)
@@ -91,8 +92,11 @@ const renderExampleRecipes = async () => {
   renderPuppyShortRecipe(mainMeal, 'mainMeal')
   renderDbBaseShortRecipe(dessert, 'dessert')
   renderDbBaseShortRecipe(cocktail, 'cocktail')
-  // here rendering recipes function
-  return exampleRecipesData
+  // const hash = 'suggestions'
+  // location.hash = `#${hash}`
+  suggestionsBox.scrollIntoView()
+  console.log('In order?')
+  return true
 }
 
 const checkTable = () => {
@@ -115,8 +119,6 @@ const showExampleRecipes = () => {
     return false
   }
   renderExampleRecipes()
-  const hash = 'sugestions'
-  location.hash = `#${hash}`
 }
 
 export default showExampleRecipes

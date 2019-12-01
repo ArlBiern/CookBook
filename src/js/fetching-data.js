@@ -53,6 +53,7 @@ const getMainMealRecipes = (ingredients) => {
   return fetch(`${puppyBaseUrl}${puppySearchRecipeEndpoint}${queryString}`, puppyHeaders)
     .then((res) => res.json())
     .then((resJson) => resJson.results)
+    .catch((err) => console.log(err))
 }
 
 const getMealCategory = (list) => {
