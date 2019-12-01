@@ -164,21 +164,21 @@
                                             <!--max 3 ingredient-->
                                             <li>Main course</li>
                                             <!-- mockup data -->
-                                            <!-- <li class="item">Pork<span class="deleteItem">+</span></li>
+                                            <li class="item">Pork<span class="deleteItem">+</span></li>
                                             <li class="item">Onions<span class="deleteItem">+</span></li>
-                                            <li class="item">Salt<span class="deleteItem">+</span></li> -->
+                                            <li class="item">Salt<span class="deleteItem">+</span></li>
                                         </ul>
                                         <ul data-box="dessert">
                                             <!--max 1 ingredient-->
                                             <li>Dessert</li>
                                             <!-- mockup data -->
-                                            <!-- <li class="item">Banana<span class="deleteItem">+</span></li> -->
+                                            <li class="item">Banana<span class="deleteItem">+</span></li>
                                         </ul>
                                         <ul data-box="cocktail">
                                             <!--max 1 ingredient-->
                                             <li>Cocktail</li>
                                             <!-- mockup data -->
-                                            <!-- <li class="item">Vodka<span class="deleteItem">+</span></li> -->
+                                            <li class="item">Vodka<span class="deleteItem">+</span></li>
                                         </ul>
                                     </div>
                                     <button  class="mainButton clear sectionC">clear table</button> <!--button remove all ingredient from potTable-->
@@ -191,20 +191,28 @@
                     <div class="overflow_div right sectionB">
                         <div class="blockBox">
                             <h2>Chef suggestions</h2>
-                            <div class="gridBox">
+                            <div class="gridBox" id="chefSuggestions">
                                 <div>
                                     <h3 class="sectionA">Main course</h3>
                                     <ul data-list="mainMeal">
-                                    </ul>
+                                        <li data-link="http://www.grouprecipes.com/6019/bulgarian-kufteta.html" data-ingredients="pork, onions, cumin, black pepper, salt"><span>Bulgarian Kufteta Recipe</span><a href="#chosen">show</a></li>
+                                        <li data-link="http://www.grouprecipes.com/3986/stuffed-potatoes.html" data-ingredients="saffron, potato, garlic, white wine, pork, onions, salt"><span>Stuffed Potatoes Recipe</span><a href="#chosen">show</a></li>
+                                        <li data-link="http://cookeatshare.com/recipes/chirina-souvlakia-grilled-skewered-pork-24421" data-ingredients="pork, onions, green pepper, tomato, salt"><span>"Chirina Souvlakia" Grilled Skewered Pork Recipe</span><a href="#chosen">show</a></li>
+                                        <li data-link="http://www.grouprecipes.com/30596/korean-black-paste-noodles.html" data-ingredients="onions, pork, squid, water, noodles, salt"><span>Korean Black Paste Noodles Recipe</span><a href="#chosen">show</a></li></ul>
                                 </div>
                                 <div>
                                     <h3 class="sectionB">Dessert</h3>
                                     <ul data-list="dessert">
-                                    </ul>
+                                        <li data-recipeid="52855"><span>Banana Pancakes</span><a href="#chosen">show</a></li>
+                                        <li data-recipeid="52853"><span>Chocolate Avocado Mousse</span><a href="#chosen">show</a></li></ul>
                                 </div>
                                 <div>
                                     <h3 class="detail">Cocktail</h3>
                                     <ul data-list="cocktail">
+                                        <li data-recipeid="15346"><span>155 Belmont</span><a href="#chosen">show</a></li>
+                                        <li data-recipeid="16998"><span>Bruised Heart</span><a href="#chosen">show</a></li>
+                                        <li data-recipeid="17224"><span>Absolutely Fabulous</span><a href="#chosen">show</a></li>
+                                        <li data-recipeid="12790"><span>Absinthe #2</span><a href="#chosen">show</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -215,44 +223,21 @@
                     <div class="overflow_div left selected sectionA">
                         <div class="blockBox">
                             <h2>Selected recipes</h2>
-                            <div class="visiblePan"></div>
+                            <div class="visiblePan hiddenBox"></div>
                             <div class="hiddenBox visibleMeal"></div>
-                            <div class="hiddenBox visibleDrink"></div>
+                            <div class="visibleDrink"></div>
                             <div class="hiddenBox gridBox">
                                 <div data-selected="mainMeal">
-                                    <!--will be removed after adding the functionality of the show chosen main course-->
-                                    <h3>Lorem, ipsum.</h3>
-                                    <ul>
-                                        <li>lorem</li>
-                                        <li>lorem</li>
-                                        <li>lorem</li>
-                                        <li>lorem</li>
-                                    </ul>
-                                    <a class="mainButton sectionA" href="#" target="_blank">preparation</a>
+                                    <h3>No recipe yet</h3>
+                                    <p>Feel free to get example recipes and choose the most delicious looking</p>
                                 </div>
                                 <div data-selected="dessert">
-                                    <!--will be removed after adding the functionality of the show chosen dessert-->
-                                    <h3>Lorem, ipsum.</h3>
-                                    <ul>
-                                        <li>lorem</li>
-                                        <li>lorem</li>
-                                        <li>lorem</li>
-                                        <li>lorem</li>
-                                    </ul>
-                                    <a class="mainButton sectionB" href="#" target="_blank">preparation</a>
+                                    <h3>No recipe yet</h3>
+                                    <p>Feel free to get example recipes and choose the most delicious looking</p>
                                 </div>
                                 <div data-selected="cocktail">
-                                    <!--will be removed after adding the functionality of the show chosen cocktail-->
-                                    <h3>Lorem, ipsum.</h3>
-                                    <ul>
-                                        <li>lorem</li>
-                                        <li>lorem</li>
-                                        <li>lorem</li>
-                                        <li>lorem</li>
-                                        <li>lorem</li>
-                                        <li>lorem</li>
-                                    </ul>
-                                    <p>Lorem Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, exercitationem molestias? Magnam doloremque omnis itaque maxime facilis nesciunt tempora porro. ipsum dolor sit amet consectetur, adipisicing elit. Architecto quia quisquam ullam amet pariatur quod asperiores, porro voluptatibus voluptatem libero!</p>
+                                    <h3>No recipe yet</h3>
+                                    <p>Feel free to get example recipes and choose the most delicious looking</p>
                                 </div>
                                 <div data-selected="img"></div>
                             </div>
