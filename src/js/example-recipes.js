@@ -1,4 +1,5 @@
 import { getMainMealRecipes, getDessertRecipes, getCocktailRecipes } from './fetching-data'
+import * as utili from './utilities'
 const potTable = document.querySelector('.potTable')
 const allTables = document.querySelectorAll('[data-box]')
 // const mainMealTable = pot.querySelector('[data-box="mainMeal"]')
@@ -37,8 +38,9 @@ const getAllRecipes = async () => {
 }
 
 const randomRecipes = (allFoundRecipes) => {
-  const randomedRecipes = []
-  return randomedRecipes
+  const drawRecipes = allFoundRecipes.map((a) => a.length > 4 ? utili.randomFewElements(a, 4) : a)
+  console.log(drawRecipes)
+  return drawRecipes
 }
 
 const getRecipesData = async () => {
