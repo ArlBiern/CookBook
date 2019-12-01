@@ -253,7 +253,7 @@ section::before {
   display: grid;
 }
 
-.selectedBox .hiddenBox {
+.selectedBox .hiddenBox, .hiddenBox {
   display: none;
 }
 
