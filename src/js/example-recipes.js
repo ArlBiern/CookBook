@@ -2,9 +2,6 @@ import { getMainMealRecipes, getDessertRecipes, getCocktailRecipes } from './fet
 import * as utili from './utilities'
 const potTable = document.querySelector('.potTable')
 const allTables = document.querySelectorAll('[data-box]')
-// const mainMealTable = pot.querySelector('[data-box="mainMeal"]')
-// const dessertTable = pot.querySelector('[data-box="dessert"]')
-// const cocktailTable = pot.querySelector('[data-box="cocktail"]')
 
 const getValueFromCard = (card) => {
   const cardValue = card.innerText.slice(0, -1).toLowerCase()
@@ -33,13 +30,11 @@ const getAllRecipes = async () => {
   const dessertRecipes = getDessertRecipes(dessertIngredient)
   const cocktailRecipes = getCocktailRecipes(cocktailIngredient)
   const allRecipesData = await Promise.all([mainMealRecipes, dessertRecipes, cocktailRecipes])
-  console.log('getAllRecipes after fetch', allRecipesData)
   return allRecipesData
 }
 
 const randomRecipes = (allFoundRecipes) => {
   const drawRecipes = allFoundRecipes.map((a) => a.length > 4 ? utili.randomFewElements(a, 4) : a)
-  console.log(drawRecipes)
   return drawRecipes
 }
 
@@ -50,9 +45,57 @@ const getRecipesData = async () => {
   return recipesData
 }
 
+const areRecipes = (array) => array.length !== 0
+
+const renderNoRecipeMessage = (dishType) => {
+  const selectedList = document.querySelector(`[data-list=${dishType}]`)
+  utili.clearElement(selectedList)
+  const listItem = document.createElement('li')
+  listItem.innerText = 'Sorry, we didn\'t find any recipes for given ingredients. Change ingredient and try again.'
+  selectedList.appendChild(listItem)
+}
+
+const renderPuppyShortRecipe = (mealArray, dishType) => {
+  if (!areRecipes(mealArray)) {
+    renderNoRecipeMessage(dishType)
+  } else {
+    const selectedList = document.querySelector(`[data-list=${dishType}]`)
+    utili.clearElement(selectedList)
+    mealArray.forEach((el) => {
+      const selectedList = document.querySelector(`[data-list=${dishType}]`)
+      const listItem = document.createElement('li')
+      const innerText = el.title.trim()
+      listItem.dataset.link = el.href
+      listItem.dataset.ingredients = el.ingredients
+      listItem.innerHTML = `${innerText}<a href="#chosen">show</a>`
+      selectedList.appendChild(listItem)
+    })
+  }
+}
+
+const renderDbBaseShortRecipe = (mealArray, dishType) => {
+  if (!areRecipes(mealArray)) {
+    renderNoRecipeMessage(dishType)
+  } else {
+    const selectedList = document.querySelector(`[data-list=${dishType}]`)
+    utili.clearElement(selectedList)
+    mealArray.forEach((el) => {
+      const selectedList = document.querySelector(`[data-list=${dishType}]`)
+      const listItem = document.createElement('li')
+      const innerText = dishType === 'dessert' ? el.strMeal.trim() : el.strDrink.trim()
+      listItem.dataset.recipeid = dishType === 'dessert' ? el.idMeal : el.idDrink
+      listItem.innerHTML = `${innerText}<a href="#chosen">show</a>`
+      selectedList.appendChild(listItem)
+    })
+  }
+}
+
 const renderExampleRecipes = async () => {
-  console.log('Show recipes')
   const exampleRecipesData = await getRecipesData()
+  const [mainMeal, dessert, cocktail] = exampleRecipesData
+  renderPuppyShortRecipe(mainMeal, 'mainMeal')
+  renderDbBaseShortRecipe(dessert, 'dessert')
+  renderDbBaseShortRecipe(cocktail, 'cocktail')
   // here rendering recipes function
   return exampleRecipesData
 }
