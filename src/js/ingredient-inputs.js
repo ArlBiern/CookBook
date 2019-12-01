@@ -67,8 +67,9 @@ const renderWarning = (button, dishGroup, reason) => {
 
 const renderCard = (dishGroup, inputValue) => {
   const htmlContent = `
-<div data-card="${dishGroup}" draggable="true" class="card">
+  <div data-card="${dishGroup}" draggable="true" class="card dragged">
   ${inputValue}
+  <span class="deleteItem">x</span>
 </div>`
   cardBox.insertAdjacentHTML('beforeend', htmlContent)
 }

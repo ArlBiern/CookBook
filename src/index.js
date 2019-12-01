@@ -16,6 +16,7 @@ import * as ing from './js/ingredient-inputs'
 import showRandomDrink from './js/random-drink.js'
 import { createFlame, createPan } from './js/pan-anim'
 import './js/random-meal.js'
+import dragAndDrop from './js/drag-drop'
 
 const pageLoad = () => {
   const selectBox = document.querySelector('.selectBox')
@@ -33,6 +34,9 @@ const pageLoad = () => {
 
     // Get and show random drink
     showRandomDrink('.visibleDrink')
+
+    // Drag and drop
+    dragAndDrop()
 
     // Creating pan animation
     const animCnt = document.querySelector('.visiblePan')
