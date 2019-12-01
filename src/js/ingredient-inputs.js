@@ -54,7 +54,7 @@ const ingredientsData = {
   }
 }
 
-const getInputValue = (dishGroup) => ingredientsData[dishGroup].input.value.trim()
+const getInputValue = (dishGroup) => ingredientsData[dishGroup].input.value.trim().toLowerCase()
 
 const renderWarning = (button, dishGroup, reason) => {
   const { [dishGroup]: { box } } = ingredientsData
@@ -77,17 +77,15 @@ const renderCard = (dishGroup, inputValue) => {
 const createIngredientCard = (clickedButton) => {
   // console.log('You clicked Add Button - I will create a card')
   const dishGroup = clickedButton.parentElement.dataset.input
-  const addedIngredients = [...cardBox.querySelectorAll(`[data-card=${dishGroup}]`)].map((i) => i.innerText)
+  const addedIngredients = [...cardBox.querySelectorAll(`[data-card=${dishGroup}]`)].map((i) => utili.getValueFromCard(i))
   // check how many ingredients in each category were already added
   if (addedIngredients.length >= ingredientsData[dishGroup].limit) {
-    // console.log('We have enough ingredients in this category')
     renderWarning(clickedButton, dishGroup, warning.enough)
     return false
   }
   // check if user has already added the ingredient
   const inputValue = getInputValue(dishGroup)
   if (addedIngredients.includes(inputValue)) {
-    // console.log('Ingredient exists')
     renderWarning(clickedButton, dishGroup, warning.duplicate)
     return false
   }
