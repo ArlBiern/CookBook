@@ -15,6 +15,7 @@ import Glide from '@glidejs/glide'
 import * as utili from './js/utilities'
 import * as ing from './js/ingredient-inputs'
 import showRandomDrink from './js/random-drink.js'
+import showExampleRecipes from './js/example-recipes'
 import { createFlame, createPan } from './js/pan-anim'
 import './js/random-meal'
 import './js/instructions'
@@ -24,6 +25,7 @@ const pageLoad = () => {
   const selectBox = document.querySelector('.selectBox')
   const ingredientsInputs = document.querySelectorAll('.selectBox input')
   const errorCloseButton = document.querySelector('.error-close-button')
+  const searchButton = document.querySelector('.pot .search')
 
   const preparePage = () => {
     new Glide('.glide', { autoplay: 4000 }).mount()
@@ -54,6 +56,7 @@ const pageLoad = () => {
     i.addEventListener('focus', ing.checkInput)
   })
   errorCloseButton.addEventListener('click', utili.hideWarning)
+  searchButton.addEventListener('click', showExampleRecipes)
 }
 
 document.addEventListener('DOMContentLoaded', pageLoad)

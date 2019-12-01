@@ -13,9 +13,19 @@ const clearElement = (el) => {
 
 const capitalizeFirstLetter = (string) => string[0].toUpperCase() + string.slice(1).toLowerCase()
 
+const randomFewElements = (array, limit) => {
+  const elements = new Set()
+  while (elements.size !== limit) {
+    elements.add(array[Math.floor(Math.random() * array.length - 1) + 1])
+  }
+  const elementsArray = [...elements]
+  return elementsArray
+}
+
 export {
   hideWarning,
   clearElement,
   isHidden,
-  capitalizeFirstLetter
+  capitalizeFirstLetter,
+  randomFewElements
 }

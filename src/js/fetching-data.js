@@ -7,7 +7,10 @@ const puppyHeaders = {
 }
 
 const dbIngredientListEndpoint = 'list.php?i=list'
+const dbRecipesEndpoint = 'filter.php?i='
+const dbRecipeEndpoint = 'lookup.php?i='
 const puppyIngredientListEndpoint = 'ing.php?q='
+const puppySearchRecipeEndpoint = 'api/?i='
 
 const getIngredients = (dishGroup) => {
   // console.log('Getting ingredients')
@@ -43,4 +46,50 @@ const getMainMealIngredients = (ingredient) => fetch(
     return array.map((i) => i.trim())
   })
 
-export { getIngredients, getMainMealIngredients }
+const getMainMealRecipes = (ingredients) => {
+  const queryString = ingredients.join(',')
+  console.log('From fetch puppy', queryString)
+  return fetch(`${puppyBaseUrl}${puppySearchRecipeEndpoint}${queryString}`, puppyHeaders)
+    .then((res) => res.json())
+    .then((resJson) => resJson.results)
+}
+
+const getMealCategory = (list) => {
+  const extendedMealList = []
+  list.forEach((el) => extendedMealList.push(
+    fetch(`${mealdbBaseUrl}${dbRecipeEndpoint}${el.idMeal}`)
+      .then((res) => res.json())
+      .then((resJson) => resJson.meals[0].strCategory.toLowerCase())
+      .then((category) => {
+        el.category = category
+        return el
+      })
+  ))
+  return Promise.all(extendedMealList)
+}
+
+const getDessertRecipes = async (ingredients) => {
+  const queryString = ingredients[0]
+  console.log('From fetch dessert', queryString)
+  return fetch(`${mealdbBaseUrl}${dbRecipesEndpoint}${queryString}`)
+    .then((res) => res.json())
+    .then((resJson) => resJson.meals)
+    .then(getMealCategory)
+    .then((listWithCategory) => listWithCategory.filter((el) => el.category === 'dessert'))
+}
+
+const getCocktailRecipes = (ingredients) => {
+  const queryString = ingredients[0]
+  console.log('From fetch cocktail', queryString)
+  return fetch(`${cocktaildbBaseUrl}${dbRecipesEndpoint}${queryString}`)
+    .then((res) => res.json())
+    .then((resJson) => resJson.drinks)
+}
+
+export {
+  getIngredients,
+  getMainMealIngredients,
+  getMainMealRecipes,
+  getDessertRecipes,
+  getCocktailRecipes
+}
