@@ -50,7 +50,7 @@ module.exports = {
         use: ['html-loader']
       },
       {
-        test: /\.(jpe?g|png)$/,
+        test: /\.jpe?g$|\.ico$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/,
         use: [
           {
             loader: 'file-loader',
