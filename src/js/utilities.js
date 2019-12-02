@@ -1,3 +1,5 @@
+// helper classes
+
 const isHidden = (e, boolean) => e.classList.toggle('hidden', boolean)
 const isHiddenBox = (e, boolean) => e.classList.toggle('hiddenBox', boolean)
 

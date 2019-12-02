@@ -28,7 +28,7 @@ const getMeal = function () {
     })
     .catch(err => {
       console.log(err)
-      alert('something went wrong, problem with connection, try again')
+      alert('Something went wrong, problem with connection, try again')
     })
 }
 

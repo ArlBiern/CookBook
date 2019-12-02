@@ -32,14 +32,9 @@ const pageLoad = () => {
   const searchButton = document.querySelector('.pot .search')
   const exampleRecipesArea = document.querySelector('#chefSuggestions')
 
+  // Prepare function needed for start
   const preparePage = () => {
     new Glide('.glide', { autoplay: 4000 }).mount()
-    // for DEBUGGING
-    // const buttons = [...document.querySelectorAll('.selectBox button')]
-    // buttons.forEach((b) => {
-    //   console.log('I turn buttons on')
-    //   b.disabled = false
-    // })
 
     // Get and show first curiosity
     showCuriosity()
@@ -47,16 +42,18 @@ const pageLoad = () => {
     // Get and show random drink
     showRandomDrink('.visibleDrink')
 
-    // Drag and drop
+    // Initialize Drag and drop functionality
     dragAndDrop()
 
-    // Creating pan animation
+    // Create pan animation
     const animCnt = document.querySelector('.visiblePan')
     createPan(animCnt, '250px')
     createFlame(animCnt, 1, '100px')
   }
 
   preparePage()
+
+  // Attach required event listener
   document.addEventListener('click', ing.hideShowedHintLists)
   newCuriosityButton.addEventListener('click', showCuriosity)
   selectBox.addEventListener('click', ing.selectBoxClicked)

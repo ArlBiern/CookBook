@@ -75,9 +75,9 @@
     margin: 2% auto 0;
   }
   .inlineBox {
-      text-align: center;
-      width: 100%;
-      float: none;
+    text-align: center;
+    width: 100%;
+    float: none;
   }
   .inlineBox {
     width: 80%;
@@ -206,7 +206,7 @@
     font-size: 14px;
   }
   .glide--slider {
-      padding-bottom: 15%;
+    padding-bottom: 15%;
   }
 }
 

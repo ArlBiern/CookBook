@@ -90,7 +90,6 @@ const renderTableCard = (dishGroup, inputValue) => {
 }
 
 const createIngredientCard = (clickedButton) => {
-  // console.log('You clicked Add Button - I will create a card')
   const dishGroup = clickedButton.parentElement.dataset.input
   const addedIngredients = [...cardBox.querySelectorAll(`[data-card=${dishGroup}]`)].map((i) => utili.getValueFromCard(i))
   const addedIngredientsInTable = [...tableBox.querySelectorAll(`[data-box=${dishGroup}] li.item`)].map((i) => utili.getValueFromCard(i))
@@ -98,18 +97,19 @@ const createIngredientCard = (clickedButton) => {
   // check mobile mode
   if (getComputedStyle(cardBox).display === 'none') {
     console.log('Ill put to table, dont create ingredients cards')
+    // check if user didn't add enough ingredients
     if (addedIngredientsInTable.length >= ingredientsData[dishGroup].tableLimit) {
       renderWarning(clickedButton, dishGroup, warning.enough)
       return false
     }
     const inputValue = getInputValue(dishGroup)
+    // check if user has already added the ingredient
     if (addedIngredients.includes(inputValue) || addedIngredientsInTable.includes(inputValue)) {
       renderWarning(clickedButton, dishGroup, warning.duplicate)
       return false
     }
 
     renderTableCard(dishGroup, inputValue)
-    // comment out for DEBUGGING
     clickedButton.disabled = true
     return true
   } else {
@@ -127,7 +127,6 @@ const createIngredientCard = (clickedButton) => {
     }
 
     renderCard(dishGroup, inputValue)
-    // comment out for DEBUGGING
     clickedButton.disabled = true
     return true
   }
@@ -138,7 +137,6 @@ const hideHints = (dishGroup) => {
 }
 
 const checkInput = (e) => {
-  // console.log('You focused input by event: ', e.type)
   const dishGroup = e.currentTarget.parentElement.dataset.input
   ingredientsData[dishGroup].button.disabled = true
 }
@@ -212,7 +210,6 @@ const checkForHints = (e) => {
 }
 
 const getIngredientFromHint = (clickedHint) => {
-  // console.log('You clicked hint')
   const { textContent } = clickedHint
   const dishGroup = clickedHint.parentElement.dataset.select
   ingredientsData[dishGroup].input.value = textContent
