@@ -3,10 +3,15 @@ import { getIngredients, getMainMealIngredients } from './fetching-data'
 
 const cardBox = document.querySelector('.cardBox')
 const selectBox = document.querySelector('.selectBox')
+const tableBox = document.querySelector('.findBox .potTable')
 
 const mainMealBox = selectBox.querySelector('[data-input="mainMeal"]')
 const dessertBox = selectBox.querySelector('[data-input="dessert"]')
 const cocktailBox = selectBox.querySelector('[data-input="cocktail"]')
+
+const mainMealTable = tableBox.querySelector('[data-box="mainMeal"]')
+const dessertTable = tableBox.querySelector('[data-box="dessert"]')
+const cocktailTable = tableBox.querySelector('[data-box="cocktail"]')
 
 const mainMealInput = document.querySelector('#mainMeal')
 const dessertInput = document.querySelector('#dessert')
@@ -31,23 +36,29 @@ const warning = {
 const ingredientsData = {
   mainMeal: {
     limit: 4,
+    tableLimit: 3,
     input: mainMealInput,
     box: mainMealBox,
+    table: mainMealTable,
     button: mainMealButton,
     hints: mainMealHints
   },
   dessert: {
     limit: 2,
+    tableLimit: 1,
     input: dessertInput,
     box: dessertBox,
+    table: dessertTable,
     button: dessertButton,
     cache: null,
     hints: dessertHints
   },
   cocktail: {
     limit: 2,
+    tableLimit: 1,
     input: cocktailInput,
     box: cocktailBox,
+    table: cocktailTable,
     button: cocktailButton,
     cache: null,
     hints: cocktailHints
@@ -67,31 +78,59 @@ const renderWarning = (button, dishGroup, reason) => {
 
 const renderCard = (dishGroup, inputValue) => {
   //
-  const capitalizeInputValue = utili.capitalizeFirstLetter(inputValue)
+  const capitalizeInputValue = utili.capitalizeFirstLetter(inputValue).trim()
   const htmlContent = `<div data-card="${dishGroup}" draggable="true" class="card dragged">${capitalizeInputValue}<span class="deleteItem">+</span></div>`
   cardBox.insertAdjacentHTML('beforeend', htmlContent)
+}
+
+const renderTableCard = (dishGroup, inputValue) => {
+  const capitalizeInputValue = utili.capitalizeFirstLetter(inputValue).trim()
+  const htmlContent = `<li class="item">${capitalizeInputValue}<span class="deleteItem">+</span></li>`
+  ingredientsData[dishGroup].table.insertAdjacentHTML('beforeend', htmlContent)
 }
 
 const createIngredientCard = (clickedButton) => {
   // console.log('You clicked Add Button - I will create a card')
   const dishGroup = clickedButton.parentElement.dataset.input
   const addedIngredients = [...cardBox.querySelectorAll(`[data-card=${dishGroup}]`)].map((i) => utili.getValueFromCard(i))
-  // check how many ingredients in each category were already added
-  if (addedIngredients.length >= ingredientsData[dishGroup].limit) {
-    renderWarning(clickedButton, dishGroup, warning.enough)
-    return false
-  }
-  // check if user has already added the ingredient
-  const inputValue = getInputValue(dishGroup)
-  if (addedIngredients.includes(inputValue)) {
-    renderWarning(clickedButton, dishGroup, warning.duplicate)
-    return false
-  }
+  const addedIngredientsInTable = [...tableBox.querySelectorAll(`[data-box=${dishGroup}] li.item`)].map((i) => utili.getValueFromCard(i))
+  console.log(addedIngredientsInTable)
+  // check mobile mode
+  if (getComputedStyle(cardBox).display === 'none') {
+    console.log('Ill put to table, dont create ingredients cards')
+    if (addedIngredientsInTable.length >= ingredientsData[dishGroup].tableLimit) {
+      renderWarning(clickedButton, dishGroup, warning.enough)
+      return false
+    }
+    const inputValue = getInputValue(dishGroup)
+    if (addedIngredients.includes(inputValue) || addedIngredientsInTable.includes(inputValue)) {
+      renderWarning(clickedButton, dishGroup, warning.duplicate)
+      return false
+    }
 
-  renderCard(dishGroup, inputValue)
-  // comment out for DEBUGGING
-  clickedButton.disabled = true
-  return true
+    renderTableCard(dishGroup, inputValue)
+    // comment out for DEBUGGING
+    clickedButton.disabled = true
+    return true
+  } else {
+    // render standard card in cardbox
+    // check if user didn't add enough ingredients
+    if (addedIngredients.length >= ingredientsData[dishGroup].limit) {
+      renderWarning(clickedButton, dishGroup, warning.enough)
+      return false
+    }
+    // check if user has already added the ingredient
+    const inputValue = getInputValue(dishGroup)
+    if (addedIngredients.includes(inputValue) || addedIngredientsInTable.includes(inputValue)) {
+      renderWarning(clickedButton, dishGroup, warning.duplicate)
+      return false
+    }
+
+    renderCard(dishGroup, inputValue)
+    // comment out for DEBUGGING
+    clickedButton.disabled = true
+    return true
+  }
 }
 
 const hideHints = (dishGroup) => {
