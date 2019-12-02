@@ -14,6 +14,10 @@ const clearElement = (el) => {
 
 const capitalizeFirstLetter = (string) => string[0].toUpperCase() + string.slice(1).toLowerCase()
 
+const random = (max) => Math.floor(Math.random() * max)
+
+const underscoreText = (text) => text.replace(/ /g, '_')
+
 const randomFewElements = (array, limit) => {
   const elements = new Set()
   while (elements.size !== limit) {
@@ -35,5 +39,7 @@ export {
   capitalizeFirstLetter,
   randomFewElements,
   getValueFromCard,
-  isHiddenBox
+  isHiddenBox,
+  random,
+  underscoreText
 }

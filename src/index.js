@@ -13,8 +13,9 @@ import './css/instructions.css'
 import './css/rwd.css'
 import Glide from '@glidejs/glide'
 import * as utili from './js/utilities'
+import { showCuriosity } from './js/curosity'
 import * as ing from './js/ingredient-inputs'
-import showRandomDrink from './js/random-drink.js'
+import showRandomDrink from './js/random-drink'
 import showExampleRecipes from './js/example-recipes'
 import showSelectedRecipes from './js/selected-recipes'
 import { createFlame, createPan } from './js/pan-anim'
@@ -23,6 +24,7 @@ import './js/instructions'
 import dragAndDrop from './js/drag-drop'
 
 const pageLoad = () => {
+  const newCuriosityButton = document.querySelector('.randomCurosityButton')
   const selectBox = document.querySelector('.selectBox')
   const ingredientsInputs = document.querySelectorAll('.selectBox input')
   const errorCloseButton = document.querySelector('.error-close-button')
@@ -38,6 +40,9 @@ const pageLoad = () => {
     //   b.disabled = false
     // })
 
+    // Get and show first curiosity
+    showCuriosity()
+
     // Get and show random drink
     showRandomDrink('.visibleDrink')
 
@@ -52,6 +57,7 @@ const pageLoad = () => {
 
   preparePage()
   document.addEventListener('click', ing.hideShowedHintLists)
+  newCuriosityButton.addEventListener('click', showCuriosity)
   selectBox.addEventListener('click', ing.selectBoxClicked)
   selectBox.addEventListener('input', ing.checkForHints)
   ingredientsInputs.forEach((i) => {
