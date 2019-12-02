@@ -6,7 +6,8 @@ const getRandomDrink = async () => {
     let ingredients = ''
     for (const prop in drink) {
       if (drink[prop] !== null && prop.includes('strIngredient')) {
-        ingredients += `<li>${drink[prop]}</li>`
+        const nbr = prop.slice(-2).match(/\d+/g).toString()
+        ingredients += `<li>${drink[prop]}: ${drink['strMeasure' + nbr]}</li>`
       }
     }
     return `
