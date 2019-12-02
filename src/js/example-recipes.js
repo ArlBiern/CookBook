@@ -35,7 +35,6 @@ const randomRecipes = (allFoundRecipes) => {
 }
 
 const getRecipesData = async () => {
-  // return random recipes result of each category
   const allFoundRecipes = await getAllRecipes()
   const recipesData = randomRecipes(allFoundRecipes)
   return recipesData
@@ -92,8 +91,6 @@ const renderExampleRecipes = async () => {
   renderPuppyShortRecipe(mainMeal, 'mainMeal')
   renderDbBaseShortRecipe(dessert, 'dessert')
   renderDbBaseShortRecipe(cocktail, 'cocktail')
-  // const hash = 'suggestions'
-  // location.hash = `#${hash}`
   suggestionsBox.scrollIntoView()
   console.log('In order?')
   return true

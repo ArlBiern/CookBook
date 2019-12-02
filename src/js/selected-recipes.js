@@ -10,14 +10,10 @@ const cocktailRecipeBox = document.querySelector('.selectedBox [data-selected="c
 
 const getRecipeData = async (recipeEl) => {
   if (Object.prototype.hasOwnProperty.call(recipeEl.dataset, 'recipeid')) {
-    console.log('Ok, i have data property')
-    console.log('Moj rodzic to:', recipeEl.parentElement.dataset.list)
     const recipeData = (recipeEl.parentElement.dataset.list === 'dessert'
       ? await getDessertRecipe(recipeEl.dataset.recipeid) : await getCocktailRecipe(recipeEl.dataset.recipeid))
     return recipeData
   } else {
-    console.log(recipeEl)
-    console.log(recipeEl.querySelector('span'))
     const name = recipeEl.querySelector('span').innerText
     const ingredients = recipeEl.dataset.ingredients.split(', ')
     const source = recipeEl.dataset.link
@@ -26,7 +22,6 @@ const getRecipeData = async (recipeEl) => {
       ingredients,
       source
     }
-    console.log(recipeData)
     return recipeData
   }
 }
@@ -44,12 +39,10 @@ const showPan = () => {
 
 const showSelectedBox = () => {
   hideAllBoxes()
-  console.log(selectedBox)
   utili.isHiddenBox(selectedBox, false)
 }
 
 const renderMainMeal = (data) => {
-  console.log('Main meal rendering')
   const {
     name,
     ingredients,
@@ -69,7 +62,6 @@ const renderMainMeal = (data) => {
 }
 
 const renderCocktail = (data) => {
-  console.log('Cocktail rendering')
   const {
     name,
     ingredients,
@@ -89,8 +81,6 @@ const renderCocktail = (data) => {
 }
 
 const renderDessert = (data) => {
-  console.log('Dessert rendering')
-  console.log(data)
   const {
     name,
     ingredients,
@@ -111,7 +101,6 @@ const renderDessert = (data) => {
 
 const renderSelectedRecipe = async (recipeEl) => {
   const recipeData = await getRecipeData(recipeEl.parentElement)
-  // render recipe
   const dishType = recipeEl.closest('[data-list]').dataset.list
   dishType === 'mainMeal' ? renderMainMeal(recipeData) : (dishType === 'cocktail' ? renderCocktail(recipeData) : renderDessert(recipeData))
   showSelectedBox()
@@ -119,7 +108,6 @@ const renderSelectedRecipe = async (recipeEl) => {
 
 const showSelectedRecipes = (e) => {
   if (e.target.tagName.toLowerCase() === 'a') {
-    console.log('Im going to show your recipe')
     showPan()
     renderSelectedRecipe(e.target)
   }

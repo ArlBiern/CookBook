@@ -13,17 +13,17 @@
 .flames {
   display: inline-block;
   height: calc(0.25 * var(--flame_cnt_size));
-	width: var(--flame_cnt_size);
-	position: relative;
+  width: var(--flame_cnt_size);
+  position: relative;
   transform: rotate(180deg);
 }
 
 .flames .flame_up, .flames .flame_down {
-	width: calc(0.125 * var(--flame_cnt_size));
-	height: calc(0.125 * var(--flame_cnt_size));
+  width: calc(0.125 * var(--flame_cnt_size));
+  height: calc(0.125 * var(--flame_cnt_size));
   border-radius: 50% 50% 0% 50%;
   transform: rotateZ(45deg);
-	position: absolute;
+  position: absolute;
   top: 0px;
 }
 
@@ -34,77 +34,77 @@
 }
 
 .flames .flame_up:nth-child(1) {
-	left: 5%;
-	animation-delay: -0.29s;
+  left: 5%;
+  animation-delay: -0.29s;
 }
 
 .flames .flame_up:nth-child(2) {
-	left: 25%;
-	animation-delay: -0.58s;
+  left: 25%;
+  animation-delay: -0.58s;
 }
 
 .flames .flame_up:nth-child(3) {
-	left: 45%;
-	animation-delay: -0.86s;
+  left: 45%;
+  animation-delay: -0.86s;
 }
 
 .flames .flame_up:nth-child(4) {
-	left: 65%;
-	animation-delay: -1.15s;
+  left: 65%;
+  animation-delay: -1.15s;
 }
 
 .flames .flame_up:nth-child(5) {
-	left: 85%;
-	animation-delay: -1.44s;
+  left: 85%;
+  animation-delay: -1.44s;
 }
 
 .flames .flame_down {
-	z-index: 3;
-	background: rgb(241, 219, 18);
-	animation: flame_sway_down 0.46s ease infinite 3.45s;
+  z-index: 3;
+  background: rgb(241, 219, 18);
+  animation: flame_sway_down 0.46s ease infinite 3.45s;
 }
 
 .flames .flame_down:nth-child(1) {
-	left: 5%;
-	animation-delay: -0.29s;
+  left: 5%;
+  animation-delay: -0.29s;
 }
 
 .flames .flame_down:nth-child(2) {
-	left: 25%;
-	animation-delay: -0.58s;
+  left: 25%;
+  animation-delay: -0.58s;
 }
 .flames .flame_down:nth-child(3) {
-	left: 45%;
-	animation-delay: -0.86s;
+  left: 45%;
+  animation-delay: -0.86s;
 }
 .flames .flame_down:nth-child(4) {
-	left: 65%;
-	animation-delay: -1.15s;
+  left: 65%;
+  animation-delay: -1.15s;
 }
 .flames .flame_down:nth-child(5) {
-	left: 85%;
-	animation-delay: -1.44s;
+  left: 85%;
+  animation-delay: -1.44s;
 }
 
 @keyframes flame_sway_up {
-	0% {
-		top: 0px;
+  0% {
+    top: 0px;
   }
-	100% {
+  100% {
     top: calc(0.25 * var(--flame_cnt_size));
     background: var(--flame_up_color);
-		transform: scale(0.5);
-		opacity: 0;
-	}
+    transform: scale(0.5);
+    opacity: 0;
+  }
 }
 
 @keyframes flame_sway_down {
-	from {
+  from {
     transform: scale(0.75);
-	}
-	to {
+  }
+  to {
     top: 0px;
-	}
+  }
 }
 
 /* ==== PANCAKE ====== */
