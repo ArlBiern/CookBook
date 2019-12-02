@@ -1,6 +1,13 @@
+import * as utili from './utilities'
+
 const cocktaildbBaseUrl = 'https://www.thecocktaildb.com/api/json/v1/1/'
 const mealdbBaseUrl = 'https://www.themealdb.com/api/json/v1/1/'
 const puppyBaseUrl = 'https://cookcoorse.glitch.me/http://www.recipepuppy.com/'
+const wikipediaBaseUrl = 'https://en.wikipedia.org/w/api.php'
+const wikipediaRestBaseUrl = 'https://en.wikipedia.org/api/rest_v1/'
+const wikipediaCategoryParams = 'action=query&list=categorymembers&format=json&cmlimit=200&cmtitle=Category%3A'
+const wikipediaOriginParam = 'origin=*'
+const wikipediaRestSummaryEndpoint = 'page/summary/'
 
 const puppyHeaders = {
   'X-Requested-With': 'XMLHttpRequest'
@@ -14,7 +21,6 @@ const puppyIngredientListEndpoint = 'ing.php?q='
 const puppySearchRecipeEndpoint = 'api/?i='
 
 const getIngredients = (dishGroup) => {
-  // console.log('Getting ingredients')
   if (dishGroup === 'cocktail') {
     const hints = []
     return fetch(`${cocktaildbBaseUrl}${dbIngredientListEndpoint}`)
@@ -22,6 +28,7 @@ const getIngredients = (dishGroup) => {
       .then((resJson) => resJson.drinks)
       .then((drinkTable) => drinkTable.forEach((d) => hints.push(d.strIngredient1)))
       .then(() => hints)
+      .catch((err) => console.log(`Error: ${err}`))
   }
 
   if (dishGroup === 'dessert') {
@@ -31,11 +38,11 @@ const getIngredients = (dishGroup) => {
       .then((resJson) => resJson.meals)
       .then((mealTable) => mealTable.forEach((d) => hints.push(d.strIngredient)))
       .then(() => hints)
+      .catch((err) => console.log(`Error: ${err}`))
   }
   return false
 }
 
-// console.log('Getting Main Ingredients')
 const getMainMealIngredients = (ingredient) => fetch(
   `${puppyBaseUrl}${puppyIngredientListEndpoint}${ingredient}`,
   puppyHeaders
@@ -46,10 +53,10 @@ const getMainMealIngredients = (ingredient) => fetch(
     array.pop()
     return array.map((i) => i.trim())
   })
+  .catch((err) => console.log(`Error: ${err}`))
 
 const getMainMealRecipes = (ingredients) => {
   const queryString = ingredients.join(',')
-  console.log('From fetch puppy', queryString)
   return fetch(`${puppyBaseUrl}${puppySearchRecipeEndpoint}${queryString}`, puppyHeaders)
     .then((res) => res.json())
     .then((resJson) => resJson.results)
@@ -66,30 +73,30 @@ const getMealCategory = (list) => {
         el.category = category
         return el
       })
+      .catch((err) => console.log(`Error: ${err}`))
   ))
   return Promise.all(extendedMealList)
 }
 
 const getDessertRecipes = async (ingredients) => {
   const queryString = ingredients[0]
-  console.log('From fetch dessert', queryString)
   return fetch(`${mealdbBaseUrl}${dbRecipesEndpoint}${queryString}`)
     .then((res) => res.json())
     .then((resJson) => resJson.meals)
     .then(getMealCategory)
     .then((listWithCategory) => listWithCategory.filter((el) => el.category === 'dessert'))
+    .catch((err) => console.log(`Error: ${err}`))
 }
 
 const getCocktailRecipes = (ingredients) => {
   const queryString = ingredients[0]
-  console.log('From fetch cocktail', queryString)
   return fetch(`${cocktaildbBaseUrl}${dbRecipesEndpoint}${queryString}`)
     .then((res) => res.json())
     .then((resJson) => resJson.drinks)
+    .catch((err) => console.log(`Error: ${err}`))
 }
 
 const getDessertRecipe = (recipeid) => {
-  console.log('Fetch dessert details')
   return fetch(`${mealdbBaseUrl}${dbRecipeEndpoint}${recipeid}`)
     .then((res) => res.json())
     .then((resJson) => resJson.meals[0])
@@ -121,10 +128,10 @@ const getDessertRecipe = (recipeid) => {
       }
       return recipeData
     })
+    .catch((err) => console.log(`Error: ${err}`))
 }
 
 const getCocktailRecipe = (recipeid) => {
-  console.log('Fetch cocktail details')
   return fetch(`${cocktaildbBaseUrl}${dbRecipeEndpoint}${recipeid}`)
     .then((res) => res.json())
     .then((resJson) => resJson.drinks[0])
@@ -154,6 +161,39 @@ const getCocktailRecipe = (recipeid) => {
       }
       return recipeData
     })
+    .catch((err) => console.log(`Error: ${err}`))
+}
+
+const getCuriosity = async (articleTitle) => {
+  const fetchAddress = `${wikipediaRestBaseUrl}${wikipediaRestSummaryEndpoint}${articleTitle}`
+  return fetch(fetchAddress)
+    .then((res) => (res.json()))
+    .then((resJson) => {
+      const articleExtractObject = resJson
+      const { displaytitle: title, extract, content_urls: { desktop: { page } } } = articleExtractObject
+      return { title, extract, page }
+    })
+    .catch((err) => console.log(`Error: ${err}`))
+}
+
+const isPage = (wikiElement) => ((wikiElement.title.startsWith('List') ||
+  wikiElement.title.startsWith('Category') ||
+  wikiElement.title.startsWith('Template') ||
+  wikiElement.title.startsWith('File')) === false)
+
+const getCategoryContent = (categoryName) => {
+  const fetchAddress = `${wikipediaBaseUrl}?${wikipediaCategoryParams}${categoryName}&${wikipediaOriginParam}`
+  return fetch(fetchAddress)
+    .then((res) => res.json())
+    .then((resJson) => resJson.query.categorymembers.filter(isPage))
+    .catch((err) => console.log(`Error: ${err}`))
+}
+
+const getRandomCuriosityTitle = async (categoryName) => {
+  const categoryContent = await getCategoryContent(categoryName)
+  const randomArticle = utili.random(categoryContent.length)
+  const randomArticleTitle = utili.underscoreText(categoryContent[randomArticle].title)
+  return randomArticleTitle
 }
 
 export {
@@ -163,5 +203,7 @@ export {
   getDessertRecipes,
   getCocktailRecipes,
   getDessertRecipe,
-  getCocktailRecipe
+  getCocktailRecipe,
+  getRandomCuriosityTitle,
+  getCuriosity
 }
