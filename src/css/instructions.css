@@ -29,15 +29,8 @@
   top: 30px;
   right: 30px;
   display: inline-block;
-  transform: rotate(45deg);
-  background-color: var(--detailDark);
   width: 30px;
   height: 30px;
-  border-radius: 50%;
-  cursor: pointer;
-  box-shadow: 0 0 4px var(--detailDark);
-  transition: .4s;
-  font-weight: 400;
 }
 
 .close:hover {

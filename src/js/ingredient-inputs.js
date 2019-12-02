@@ -68,7 +68,7 @@ const renderWarning = (button, dishGroup, reason) => {
 const renderCard = (dishGroup, inputValue) => {
   //
   const capitalizeInputValue = utili.capitalizeFirstLetter(inputValue)
-  const htmlContent = `<div data-card="${dishGroup}" draggable="true" class="card dragged">${capitalizeInputValue}<span class="deleteItem">x</span></div>`
+  const htmlContent = `<div data-card="${dishGroup}" draggable="true" class="card dragged">${capitalizeInputValue}<span class="deleteItem">+</span></div>`
   cardBox.insertAdjacentHTML('beforeend', htmlContent)
 }
 

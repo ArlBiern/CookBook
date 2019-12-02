@@ -66,6 +66,14 @@
   .sliderSmall img {
     display: none;
   }
+  .slider .mainButton {
+    margin-right: auto;
+  }
+  .sliderSmall a {
+    display: block;
+    max-width: 150px;
+    margin: 2% auto 0;
+  }
   .inlineBox {
       text-align: center;
       width: 100%;
@@ -205,6 +213,10 @@
 @media (max-width: 550px) {
   h1::before, h1::after {
     right: 23%;
+  }
+  .glide__arrow {
+    top: 85%;
+    font-size: 12px;
   }
 }
 
