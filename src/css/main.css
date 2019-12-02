@@ -374,6 +374,8 @@ header p q {
 
 .slider .mainButton {
   margin-right: 0;
+  display: inline-block;
+  margin-top: 3%;
 }
 
 .slide {
