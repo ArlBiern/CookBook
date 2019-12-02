@@ -2,6 +2,7 @@ import { getMainMealRecipes, getDessertRecipes, getCocktailRecipes } from './fet
 import * as utili from './utilities'
 const potTable = document.querySelector('.potTable')
 const allTables = document.querySelectorAll('[data-box]')
+const suggestionsBox = document.querySelector('#suggestions')
 
 const getIngredient = async (dish) => {
   const table = potTable.querySelector(`[data-box="${dish}"]`)
@@ -59,10 +60,10 @@ const renderPuppyShortRecipe = (mealArray, dishType) => {
     mealArray.forEach((el) => {
       const selectedList = document.querySelector(`[data-list=${dishType}]`)
       const listItem = document.createElement('li')
-      const innerText = el.title.trim()
+      const innerText = el.title.replace('Recipe', '').trim()
       listItem.dataset.link = el.href
       listItem.dataset.ingredients = el.ingredients
-      listItem.innerHTML = `${innerText}<a href="#chosen">show</a>`
+      listItem.innerHTML = `<span>${innerText}</span><a href="#chosen">show</a>`
       selectedList.appendChild(listItem)
     })
   }
@@ -79,7 +80,7 @@ const renderDbBaseShortRecipe = (mealArray, dishType) => {
       const listItem = document.createElement('li')
       const innerText = dishType === 'dessert' ? el.strMeal.trim() : el.strDrink.trim()
       listItem.dataset.recipeid = dishType === 'dessert' ? el.idMeal : el.idDrink
-      listItem.innerHTML = `${innerText}<a href="#chosen">show</a>`
+      listItem.innerHTML = `<span>${innerText}</span><a href="#chosen">show</a>`
       selectedList.appendChild(listItem)
     })
   }
@@ -91,8 +92,11 @@ const renderExampleRecipes = async () => {
   renderPuppyShortRecipe(mainMeal, 'mainMeal')
   renderDbBaseShortRecipe(dessert, 'dessert')
   renderDbBaseShortRecipe(cocktail, 'cocktail')
-  // here rendering recipes function
-  return exampleRecipesData
+  // const hash = 'suggestions'
+  // location.hash = `#${hash}`
+  suggestionsBox.scrollIntoView()
+  console.log('In order?')
+  return true
 }
 
 const checkTable = () => {

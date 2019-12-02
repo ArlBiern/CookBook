@@ -16,6 +16,7 @@ import * as utili from './js/utilities'
 import * as ing from './js/ingredient-inputs'
 import showRandomDrink from './js/random-drink.js'
 import showExampleRecipes from './js/example-recipes'
+import showSelectedRecipes from './js/selected-recipes'
 import { createFlame, createPan } from './js/pan-anim'
 import './js/random-meal'
 import './js/instructions'
@@ -26,6 +27,7 @@ const pageLoad = () => {
   const ingredientsInputs = document.querySelectorAll('.selectBox input')
   const errorCloseButton = document.querySelector('.error-close-button')
   const searchButton = document.querySelector('.pot .search')
+  const exampleRecipesArea = document.querySelector('#chefSuggestions')
 
   const preparePage = () => {
     new Glide('.glide', { autoplay: 4000 }).mount()
@@ -57,6 +59,7 @@ const pageLoad = () => {
   })
   errorCloseButton.addEventListener('click', utili.hideWarning)
   searchButton.addEventListener('click', showExampleRecipes)
+  exampleRecipesArea.addEventListener('click', showSelectedRecipes)
 }
 
 document.addEventListener('DOMContentLoaded', pageLoad)

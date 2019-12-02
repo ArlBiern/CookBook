@@ -576,6 +576,10 @@ header p q {
   box-shadow: 0 0 4px var(--detailDark);
 }
 
+.listBox li span {
+  box-shadow: none;
+}
+
 .listBox h2, .listBox h3 {
   margin-bottom: 2%;
 }
