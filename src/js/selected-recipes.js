@@ -7,7 +7,6 @@ const selectedBox = document.querySelector('.selectedBox .gridBox')
 const mainMealRecipeBox = document.querySelector('.selectedBox [data-selected="mainMeal"]')
 const dessertRecipeBox = document.querySelector('.selectedBox [data-selected="dessert"]')
 const cocktailRecipeBox = document.querySelector('.selectedBox [data-selected="cocktail"]')
-const imageRecipeBox = document.querySelector('.selectedBox [data-selected="img"]')
 
 const getRecipeData = async (recipeEl) => {
   if (Object.prototype.hasOwnProperty.call(recipeEl.dataset, 'recipeid')) {
@@ -95,8 +94,7 @@ const renderDessert = (data) => {
   const {
     name,
     ingredients,
-    source,
-    image
+    source
   } = data
   let ingredientsListHTML = ''
   ingredients.forEach((i) => {
@@ -109,7 +107,6 @@ const renderDessert = (data) => {
   `
   utili.clearElement(dessertRecipeBox)
   dessertRecipeBox.insertAdjacentHTML('afterbegin', recipeHTML)
-  imageRecipeBox.style.backgroundImage = `url(${image})`
 }
 
 const renderSelectedRecipe = async (recipeEl) => {
