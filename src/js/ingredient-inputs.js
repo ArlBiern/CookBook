@@ -1,5 +1,5 @@
 import * as utili from './utilities'
-import { getIngredients, getMainMealIngredients } from './fetching-data'
+import { getIngredients } from './fetching-data'
 
 const cardBox = document.querySelector('.cardBox')
 const selectBox = document.querySelector('.selectBox')
@@ -35,12 +35,13 @@ const warning = {
 
 const ingredientsData = {
   mainMeal: {
-    limit: 4,
-    tableLimit: 3,
+    limit: 2,
+    tableLimit: 1,
     input: mainMealInput,
     box: mainMealBox,
     table: mainMealTable,
     button: mainMealButton,
+    cache: null,
     hints: mainMealHints
   },
   dessert: {
@@ -77,7 +78,6 @@ const renderWarning = (button, dishGroup, reason) => {
 }
 
 const renderCard = (dishGroup, inputValue) => {
-  //
   const capitalizeInputValue = utili.capitalizeFirstLetter(inputValue).trim()
   const htmlContent = `<div data-card="${dishGroup}" draggable="true" class="card dragged">${capitalizeInputValue}<span class="deleteItem">+</span></div>`
   cardBox.insertAdjacentHTML('beforeend', htmlContent)
@@ -161,11 +161,6 @@ const getAllHints = async (dishGroup) => {
 
 const getMatchedHints = async (dishGroup) => {
   const actualInputValue = ingredientsData[dishGroup].input.value
-  if (dishGroup === 'mainMeal') {
-    const mainMealIngredients = await getMainMealIngredients(actualInputValue)
-    return mainMealIngredients
-  }
-
   const allIngredients = await getAllHints(dishGroup)
   const matchedIngredients = findMatched(actualInputValue, allIngredients)
   return matchedIngredients

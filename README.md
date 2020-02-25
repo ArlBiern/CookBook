@@ -5,7 +5,7 @@
 
 > This app was created as a part of the CodersCamp project (2019, Warsaw group) - Third project - Javascript, interactive apps
 
-**Check demo** at ✨ [adress to live version](https://address-to-live.version) and **source code** at 🏠 [GitHub project homepage](https://github.com/dobrzyckahanna/CookBook)
+**Check demo** at ✨ [adress to live version](https://freefrogs.github.io/CookBook/) and **source code** at 🏠 [GitHub project homepage](https://github.com/dobrzyckahanna/CookBook)
 
 **Created by**:
 * **FreeFrogs** - check at [Github](https://github.com/freefrogs)
@@ -21,14 +21,14 @@ We created an app that helps choose meal, cocktail or dessert recipes. It also p
 ### Install & usage
 * Download zip file & unzip or clone repository 
 ```bash
-git clone https://github.com/dobrzyckahanna/CookBook.git
+git clone git@github.com:freefrogs/CookBook.git
 ```
 * Install required project dependencies and run developer server
 ```bash
 cd CookBook
 npm ci
-# or for npm below 6: npm i
-npm start
+# or for npm below 6: npm install
+npm run start
 ```
 * This builds project and runs developer server. Open http://localhost:8080 to see and play with app.
 
@@ -42,7 +42,7 @@ npm start
 - you can get a random meal recipe from MealDB
 - you can get a random drink recipe from CocktailDB
 - you can get a random food curiosity from Wikipedia (we chose snack food - who doesn't like snacks?)
-- you can choose favourite ingredients, put them into a pot and let magic happen - receive a couple of random recipes for every situation (main meal from puppy Recipe, dessert from MealDB & cocktail from CocktailDB) - play with drag and drop feature
+- you can choose favourite ingredients, put them into a pot and let magic happen - receive a couple of random recipes for every situation (main meal & dessert from MealDB, cocktail from CocktailDB) - play with drag and drop feature
 - you can enjoy a pan animation when you are waiting for recipes
 
 ### Code requirements and specification
@@ -73,8 +73,6 @@ As we all learn new things during the course, we decided to use different approa
 * static images from [Pixabay](https://pixabay.com) and [FreeFrogs](https://github.com/freefrogs)
 * used [Glide.js](https://glidejs.com/) slider developed by [Jędrzej Chałubek](https://github.com/jedrzejchalubek)
 * utilized API:
-  * meal recipes from: [Recipe Puppy](http://www.recipepuppy.com/)
   * dessert & random meal recipes from: [TheMealDB](https://www.themealdb.com/)
   * cocktail recipes from: [TheCocktailDB](https://www.themealdb.com/)
   * food curiosity from: [Wikipedia](https://en.wikipedia.org/)
-* used [CORS Anywhere](https://github.com/Rob--W/cors-anywhere/) source code for creating reverse proxy

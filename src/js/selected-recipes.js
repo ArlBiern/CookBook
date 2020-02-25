@@ -1,5 +1,5 @@
 import * as utili from './utilities'
-import { getDessertRecipe, getCocktailRecipe } from './fetching-data'
+import { getRecipe, getCocktailRecipe } from './fetching-data'
 
 const selectedBoxes = document.querySelectorAll('.selectedBox .blockBox > div')
 const panBox = document.querySelector('.selectedBox .visiblePan')
@@ -9,21 +9,9 @@ const dessertRecipeBox = document.querySelector('.selectedBox [data-selected="de
 const cocktailRecipeBox = document.querySelector('.selectedBox [data-selected="cocktail"]')
 
 const getRecipeData = async (recipeEl) => {
-  if (Object.prototype.hasOwnProperty.call(recipeEl.dataset, 'recipeid')) {
-    const recipeData = (recipeEl.parentElement.dataset.list === 'dessert'
-      ? await getDessertRecipe(recipeEl.dataset.recipeid) : await getCocktailRecipe(recipeEl.dataset.recipeid))
-    return recipeData
-  } else {
-    const name = recipeEl.querySelector('span').innerText
-    const ingredients = recipeEl.dataset.ingredients.split(', ')
-    const source = recipeEl.dataset.link
-    const recipeData = {
-      name,
-      ingredients,
-      source
-    }
-    return recipeData
-  }
+  const recipeData = (recipeEl.parentElement.dataset.list === 'cocktail'
+    ? await getCocktailRecipe(recipeEl.dataset.recipeid) : await getRecipe(recipeEl.dataset.recipeid))
+  return recipeData
 }
 
 const hideAllBoxes = () => {

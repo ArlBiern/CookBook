@@ -13,16 +13,16 @@ const getIngredient = async (dish) => {
 }
 
 const getIngredientsFromTable = async () => {
-  const mainMealIngredients = getIngredient('mainMeal')
+  const mainMealIngredient = getIngredient('mainMeal')
   const dessertIngredient = getIngredient('dessert')
   const cocktailIngredient = getIngredient('cocktail')
-  const ingredients = await Promise.all([mainMealIngredients, dessertIngredient, cocktailIngredient])
+  const ingredients = await Promise.all([mainMealIngredient, dessertIngredient, cocktailIngredient])
   return ingredients
 }
 
 const getAllRecipes = async () => {
-  const [mainMealIngredients, dessertIngredient, cocktailIngredient] = await getIngredientsFromTable()
-  const mainMealRecipes = getMainMealRecipes(mainMealIngredients)
+  const [mainMealIngredient, dessertIngredient, cocktailIngredient] = await getIngredientsFromTable()
+  const mainMealRecipes = getMainMealRecipes(mainMealIngredient)
   const dessertRecipes = getDessertRecipes(dessertIngredient)
   const cocktailRecipes = getCocktailRecipes(cocktailIngredient)
   const allRecipesData = await Promise.all([mainMealRecipes, dessertRecipes, cocktailRecipes])
@@ -50,24 +50,6 @@ const renderNoRecipeMessage = (dishType) => {
   selectedList.appendChild(listItem)
 }
 
-const renderPuppyShortRecipe = (mealArray, dishType) => {
-  if (!areRecipes(mealArray)) {
-    renderNoRecipeMessage(dishType)
-  } else {
-    const selectedList = document.querySelector(`[data-list=${dishType}]`)
-    utili.clearElement(selectedList)
-    mealArray.forEach((el) => {
-      const selectedList = document.querySelector(`[data-list=${dishType}]`)
-      const listItem = document.createElement('li')
-      const innerText = el.title.replace('Recipe', '').trim()
-      listItem.dataset.link = el.href
-      listItem.dataset.ingredients = el.ingredients
-      listItem.innerHTML = `<span>${innerText}</span><a href="#chosen">show</a>`
-      selectedList.appendChild(listItem)
-    })
-  }
-}
-
 const renderDbBaseShortRecipe = (mealArray, dishType) => {
   if (!areRecipes(mealArray)) {
     renderNoRecipeMessage(dishType)
@@ -77,8 +59,8 @@ const renderDbBaseShortRecipe = (mealArray, dishType) => {
     mealArray.forEach((el) => {
       const selectedList = document.querySelector(`[data-list=${dishType}]`)
       const listItem = document.createElement('li')
-      const innerText = dishType === 'dessert' ? el.strMeal.trim() : el.strDrink.trim()
-      listItem.dataset.recipeid = dishType === 'dessert' ? el.idMeal : el.idDrink
+      const innerText = dishType === 'cocktail' ? el.strDrink.trim() : el.strMeal.trim()
+      listItem.dataset.recipeid = dishType === 'cocktail' ? el.idDrink : el.idMeal
       listItem.innerHTML = `<span>${innerText}</span><a href="#chosen">show</a>`
       selectedList.appendChild(listItem)
     })
@@ -88,7 +70,7 @@ const renderDbBaseShortRecipe = (mealArray, dishType) => {
 const renderExampleRecipes = async () => {
   const exampleRecipesData = await getRecipesData()
   const [mainMeal, dessert, cocktail] = exampleRecipesData
-  renderPuppyShortRecipe(mainMeal, 'mainMeal')
+  renderDbBaseShortRecipe(mainMeal, 'mainMeal')
   renderDbBaseShortRecipe(dessert, 'dessert')
   renderDbBaseShortRecipe(cocktail, 'cocktail')
   suggestionsBox.scrollIntoView()
@@ -111,7 +93,7 @@ const showExampleRecipes = () => {
     alert('No ingredients in pot')
     return false
   }
-  if (tableState[0] !== 3 || tableState[1] !== 1 || tableState[2] !== 1) {
+  if (tableState[0] !== 1 || tableState[1] !== 1 || tableState[2] !== 1) {
     alert('Add more ingredients to pot')
     return false
   }

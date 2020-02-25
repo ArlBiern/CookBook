@@ -2,23 +2,15 @@ import * as utili from './utilities'
 
 const cocktaildbBaseUrl = 'https://www.thecocktaildb.com/api/json/v1/1/'
 const mealdbBaseUrl = 'https://www.themealdb.com/api/json/v1/1/'
-const puppyBaseUrl = 'https://cookcoorse.glitch.me/http://www.recipepuppy.com/'
 const wikipediaBaseUrl = 'https://en.wikipedia.org/w/api.php'
 const wikipediaRestBaseUrl = 'https://en.wikipedia.org/api/rest_v1/'
 const wikipediaCategoryParams = 'action=query&list=categorymembers&format=json&cmlimit=200&cmtitle=Category%3A'
 const wikipediaOriginParam = 'origin=*'
 const wikipediaRestSummaryEndpoint = 'page/summary/'
 
-const puppyHeaders = {
-  'X-Requested-With': 'XMLHttpRequest'
-}
-
 const dbIngredientListEndpoint = 'list.php?i=list'
 const dbRecipesEndpoint = 'filter.php?i='
 const dbRecipeEndpoint = 'lookup.php?i='
-
-const puppyIngredientListEndpoint = 'ing.php?q='
-const puppySearchRecipeEndpoint = 'api/?i='
 
 const getIngredients = (dishGroup) => {
   if (dishGroup === 'cocktail') {
@@ -31,7 +23,7 @@ const getIngredients = (dishGroup) => {
       .catch((err) => console.log(`Error: ${err}`))
   }
 
-  if (dishGroup === 'dessert') {
+  if (dishGroup === 'dessert' || dishGroup === 'mainMeal') {
     const hints = []
     return fetch(`${mealdbBaseUrl}${dbIngredientListEndpoint}`)
       .then((res) => res.json())
@@ -40,27 +32,8 @@ const getIngredients = (dishGroup) => {
       .then(() => hints)
       .catch((err) => console.log(`Error: ${err}`))
   }
+
   return false
-}
-
-const getMainMealIngredients = (ingredient) => fetch(
-  `${puppyBaseUrl}${puppyIngredientListEndpoint}${ingredient}`,
-  puppyHeaders
-)
-  .then((res) => res.text())
-  .then((resText) => resText.split('\n'))
-  .then((array) => {
-    array.pop()
-    return array.map((i) => i.trim())
-  })
-  .catch((err) => console.log(`Error: ${err}`))
-
-const getMainMealRecipes = (ingredients) => {
-  const queryString = ingredients.join(',')
-  return fetch(`${puppyBaseUrl}${puppySearchRecipeEndpoint}${queryString}`, puppyHeaders)
-    .then((res) => res.json())
-    .then((resJson) => resJson.results)
-    .catch((err) => console.log(err))
 }
 
 const getMealCategory = (list) => {
@@ -76,6 +49,16 @@ const getMealCategory = (list) => {
       .catch((err) => console.log(`Error: ${err}`))
   ))
   return Promise.all(extendedMealList)
+}
+
+const getMainMealRecipes = async (ingredients) => {
+  const queryString = ingredients[0]
+  return fetch(`${mealdbBaseUrl}${dbRecipesEndpoint}${queryString}`)
+    .then((res) => res.json())
+    .then((resJson) => resJson.meals)
+    .then(getMealCategory)
+    .then((listWithCategory) => listWithCategory.filter((el) => el.category !== 'dessert'))
+    .catch((err) => console.log(`Error: ${err}`))
 }
 
 const getDessertRecipes = async (ingredients) => {
@@ -96,7 +79,7 @@ const getCocktailRecipes = (ingredients) => {
     .catch((err) => console.log(`Error: ${err}`))
 }
 
-const getDessertRecipe = (recipeid) => {
+const getRecipe = (recipeid) => {
   return fetch(`${mealdbBaseUrl}${dbRecipeEndpoint}${recipeid}`)
     .then((res) => res.json())
     .then((resJson) => resJson.meals[0])
@@ -198,11 +181,10 @@ const getRandomCuriosityTitle = async (categoryName) => {
 
 export {
   getIngredients,
-  getMainMealIngredients,
   getMainMealRecipes,
   getDessertRecipes,
   getCocktailRecipes,
-  getDessertRecipe,
+  getRecipe,
   getCocktailRecipe,
   getRandomCuriosityTitle,
   getCuriosity

@@ -73,7 +73,7 @@ const dragAndDrop = () => {
   function checkLimits (draggedElement, type) {
     switch (type) {
       case 'mainMeal':
-        return allLists[0].children.length > 3
+        return allLists[0].children.length > 1
       case 'dessert':
         return allLists[1].children.length > 1
       case 'cocktail':

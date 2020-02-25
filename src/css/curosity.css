@@ -10,7 +10,7 @@
 }
 
 .curosity p {
-  padding: 2%;
+  padding: 10px;
   text-align: justify;
 }
 
@@ -22,6 +22,6 @@
   font-style: initial;
   font-weight: 400;
   float: right;
-  margin: 2%;
+  margin: 0 20px;
   padding: 1%;
 }
