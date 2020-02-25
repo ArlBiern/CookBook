@@ -5,7 +5,7 @@
 
 This app was created as a part of the CodersCamp project (2019, Warsaw group) - Third project - Javascript, interactive apps
 
-**Check demo** at ✨ [adress to live version](https://freefrogs.github.io/CookBook/) and **source code** at 🏠 [GitHub project homepage](https://github.com/dobrzyckahanna/CookBook)
+**Check demo** at ✨ [GitHub Pages](https://freefrogs.github.io/CookBook/) and **source code** at 🏠 [GitHub project homepage](https://github.com/dobrzyckahanna/CookBook)
 
 **Created by**:
 * **FreeFrogs** - check at [Github](https://github.com/freefrogs)
