@@ -1,0 +1,319 @@
+/* Flame animation */
+
+.flame_cnt {
+  --flame_cnt_size: 120px;
+  --flame_down_color: rgb(241, 219, 18);
+  --flame_up_color: red;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 10;
+}
+
+.flames {
+  display: inline-block;
+  height: calc(0.25 * var(--flame_cnt_size));
+  width: var(--flame_cnt_size);
+  position: relative;
+  transform: rotate(180deg);
+}
+
+.flames .flame_up, .flames .flame_down {
+  width: calc(0.125 * var(--flame_cnt_size));
+  height: calc(0.125 * var(--flame_cnt_size));
+  border-radius: 50% 50% 0% 50%;
+  transform: rotateZ(45deg);
+  position: absolute;
+  top: 0px;
+}
+
+.flames .flame_up {
+  z-index: 2;
+  animation: flame_sway_up 0.46s ease infinite;
+  background: var(--flame_down_color);
+}
+
+.flames .flame_up:nth-child(1) {
+  left: 5%;
+  animation-delay: -0.29s;
+}
+
+.flames .flame_up:nth-child(2) {
+  left: 25%;
+  animation-delay: -0.58s;
+}
+
+.flames .flame_up:nth-child(3) {
+  left: 45%;
+  animation-delay: -0.86s;
+}
+
+.flames .flame_up:nth-child(4) {
+  left: 65%;
+  animation-delay: -1.15s;
+}
+
+.flames .flame_up:nth-child(5) {
+  left: 85%;
+  animation-delay: -1.44s;
+}
+
+.flames .flame_down {
+  z-index: 3;
+  background: rgb(241, 219, 18);
+  animation: flame_sway_down 0.46s ease infinite 3.45s;
+}
+
+.flames .flame_down:nth-child(1) {
+  left: 5%;
+  animation-delay: -0.29s;
+}
+
+.flames .flame_down:nth-child(2) {
+  left: 25%;
+  animation-delay: -0.58s;
+}
+.flames .flame_down:nth-child(3) {
+  left: 45%;
+  animation-delay: -0.86s;
+}
+.flames .flame_down:nth-child(4) {
+  left: 65%;
+  animation-delay: -1.15s;
+}
+.flames .flame_down:nth-child(5) {
+  left: 85%;
+  animation-delay: -1.44s;
+}
+
+@keyframes flame_sway_up {
+  0% {
+    top: 0px;
+  }
+  100% {
+    top: calc(0.25 * var(--flame_cnt_size));
+    background: var(--flame_up_color);
+    transform: scale(0.5);
+    opacity: 0;
+  }
+}
+
+@keyframes flame_sway_down {
+  from {
+    transform: scale(0.75);
+  }
+  to {
+    top: 0px;
+  }
+}
+
+/* ==== PANCAKE ====== */
+
+.pan_cnt {
+  --pan_anim_time: 2.1s;
+  --pan_anim_size: 200px;
+  --pan_color: #ccc;
+  --pan_handle_color: #000;
+  --pan_bubble_color: #fff;
+  position: relative;
+  width: var(--pan_anim_size);
+  height: calc(var(--pan_anim_size) + 50px);
+  position: relative;
+  margin: 0 auto;
+  z-index: 1;
+}
+
+.pan_cnt p {
+  height: 50px;
+  position: relative;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  color: var(--color);
+  opacity: 1;
+  animation: pulse var(--pan_anim_time) linear infinite;
+}
+
+.pan_cnt .cooking_animation {
+  position: relative;
+  margin: 0 auto;
+  top: 0;
+  width: 100%;
+  height: var(--pan_anim_size);
+}
+
+.pan_cnt .bubble {
+  position: absolute;
+  border-radius: 100%;
+  box-shadow: 0 0 8px var(--pan_bubble_color);
+}
+
+.pan_cnt .bubble:nth-child(1) {
+  left: 28%;
+  width: 4%;
+  height: 4%;
+  animation: bubble 2s cubic-bezier(.53, .16, .39, .96) infinite;
+}
+
+.pan_cnt .bubble:nth-child(2) {
+  left: 38%;
+  width: 2%;
+  height: 2%;
+  animation: bubble 2s ease-in-out -0.35s infinite;
+}
+
+.pan_cnt .bubble:nth-child(3) {
+  left: 45%;
+  width: 3%;
+  height: 3%;
+  animation: bubble 1.5s cubic-bezier(.53, .16, .39, .96) -0.55s infinite;
+}
+
+.pan_cnt .bubble:nth-child(4) {
+  left: 56%;
+  width: 3%;
+  height: 3%;
+  animation: bubble 1.8s cubic-bezier(.53, .16, .39, .96) -0.9s infinite;
+}
+
+.pan_cnt .bubble:nth-child(5) {
+  left: 63%;
+  width: 2%;
+  height:2%;
+  animation: bubble 1.6s ease-in-out -1s infinite;
+}
+
+.pan_cnt .pan_area {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+}
+
+.pan_cnt .pan_elements {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-origin: 120% 40%;
+  animation: panAngle var(--pan_anim_time) ease-in-out infinite;
+  z-index: 10;
+}
+
+.pan_cnt .handle {
+  position: absolute;
+  bottom: 0%;
+  left: 77%;
+  width: 35%;
+  height: 20%;
+  background-color: transparent;
+  border-top: 7px solid var(--pan_handle_color);
+  border-left: 7px solid transparent;
+  border-radius: 100%;
+  transform: rotateZ(-20deg) rotateY(180deg) scale(1.3, 0.9);
+  z-index: 1;
+}
+
+.pan_cnt .pan {
+  position: absolute;
+  bottom: 0%;
+  right: 50%;
+  transform: translateX(50%);
+  width: 50%;
+  height: 8%;
+  background-color: var(--pan_color);
+  border-radius: 0 0 1.4em 1.4em;
+  z-index: 2;
+}
+
+.pan_cnt .pancake {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40%;
+  height: 40%;
+}
+
+.pan_cnt .pastry {
+  position: absolute;
+  top: 120%;
+  transform: rotateX(90deg);
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(#A34000 10%, #FD9600 70%);
+  border-radius: 100%;
+  animation: pastryFly var(--pan_anim_time) ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes panAngle {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  5% {
+    transform: rotateZ(20deg);
+  }
+  25%, 100% {
+    transform: rotateZ(0deg);
+  }
+}
+
+@keyframes pastryFly {
+  0% {
+    top: 120%;
+    left: -30%;
+    transform: rotateX(90deg);
+  }
+  3% {
+    top: 30%;
+    transform: rotateX(90deg) rotateZ(25deg);
+  }
+  30% {
+    top: -100%;
+    transform: rotateX(-145deg) rotateZ(-25deg);
+  }
+  60% {
+    top: 110%;
+    transform: rotateX(85deg) rotateZ(0deg);
+    left: 0;
+  }
+  100% {
+    top: 120%;
+    transform: rotateX(90deg);
+  }
+}
+
+@keyframes bubble {
+  0% {
+    transform: scale(.15, .15);
+    top: 80%;
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1, 1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(.33, .33);
+    top: 60%;
+    opacity: 0;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1, 1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2, 1);
+    opacity: 0.25;
+  }
+  100% {
+    transform: scale(1, 1);
+    opacity: 1;
+  }
+}

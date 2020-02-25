@@ -1,0 +1,286 @@
+@media (min-width: 1350px) {
+  header::before, .curosityBox::before, .listBox::before {
+    left: -20%;
+  }
+  .sliderBox::before, .findBox::before, .selectedBox::before {
+    right: -20%;
+  }
+  h1::before, h1::after {
+    right: 32%;
+  }
+}
+
+@media (min-width: 1500px) {
+  header::before, .curosityBox::before, .listBox::before {
+    left: -18%;
+  }
+  .sliderBox::before, .findBox::before, .selectedBox::before {
+    right: -18%;
+  }
+  h1::before, h1::after {
+    right: 33%;
+  }
+}
+
+@media (min-width: 1650px) {
+  header::before, .curosityBox::before, .listBox::before {
+    left: -17%;
+  }
+  .sliderBox::before, .findBox::before, .selectedBox::before {
+    right: -17%;
+  }
+  h1::before, h1::after {
+    right: 34%;
+  }
+}
+
+@media (max-width: 1250px) {
+  h1::before, h1::after {
+    right: 29%;
+  }
+}
+
+@media (max-width: 1200px) {
+  .cardBox {
+    display: none;
+  }
+  .findBox .gridBox {
+    grid-template: auto / 1fr 1fr;
+  }
+  input, label {
+    display: block;
+    margin: 1% auto;
+  }
+}
+
+@media (max-width: 1150px) {
+  h1::before, h1::after {
+    right: 27%;
+  }
+}
+
+@media (max-width: 1050px) {
+  h1::before, h1::after {
+    right: 25%;
+  }
+  .sliderSmall img {
+    display: none;
+  }
+  .slider .mainButton {
+    margin-right: auto;
+  }
+  .sliderSmall a {
+    display: block;
+    max-width: 150px;
+    margin: 2% auto 0;
+  }
+  .inlineBox {
+    text-align: center;
+    width: 100%;
+    float: none;
+  }
+  .inlineBox {
+    width: 80%;
+    margin: 5% auto;
+  }
+}
+
+@media (max-width: 980px) {
+  h1::before, h1::after {
+    right: 23%;
+  }
+}
+
+@media (max-width: 900px) {
+  h1 {
+    font-size: 48px;
+  }
+  h1::before, h1::after {
+    right: 28%;
+  }
+  h1::before {
+    top: -24px;
+    width: 60px;
+    height: 53px;
+  }
+  h1::after {
+    bottom: 7px;
+    width: 66px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 850px) {
+  h1::before, h1::after {
+    right: 27%;
+  }
+  footer a:first-child {
+    margin-left: auto;
+    margin-top: 10px;
+  }
+  footer a {
+    display: block;
+    width: 50%;
+    margin: 0 auto;
+  }
+  footer a::before {
+    width: 20px;
+    height: 20px;
+    top: 10%;
+    left: 10%;
+    transform: translate(0);
+  }
+}
+
+@media (max-width: 800px) {
+  h1::before, h1::after {
+    right: 26%;
+  }
+  .findBox .gridBox, .listBox .gridBox {
+    grid-template: auto / 1fr;
+  }
+}
+
+@media (max-width: 750px) {
+  h1::before, h1::after {
+    right: 24%;
+  }
+  footer a {
+    width: 80%;
+  }
+}
+
+@media (max-width: 700px) {
+  h1::before, h1::after {
+    right: 22%;
+  }
+  .selectedBox .gridBox {
+    grid-template: auto / 1fr;
+  }
+  header::before, .curosityBox::before, .listBox::before {
+    left: -30%;
+  }
+  .sliderBox::before, .findBox::before, .selectedBox::before {
+    right: -30%;
+  }
+}
+
+@media (max-width: 650px) {
+  h1::before, h1::after {
+    right: 20%;
+  }
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 36px;
+  }
+  h1::before, h1::after {
+    right: 25%;
+  }
+  h1::before {
+    top: -18px;
+    width: 45px;
+    height: 40px;
+  }
+  h1::after {
+    bottom: 3px;
+    width: 50px;
+    height: 14px;
+  }
+  .board h2 {
+    font-size: 20px;
+  }
+  .board h3 {
+    font-size: 16px;
+  }
+  .board p {
+    font-size: 14px;
+  }
+  .board a, .board .mainButton {
+    font-size: 13px;
+    padding: 5px;
+    border-radius: 4px;
+  }
+  .board li {
+    font-size: 14px;
+  }
+  .glide--slider {
+    padding-bottom: 15%;
+  }
+}
+
+@media (max-width: 550px) {
+  h1::before, h1::after {
+    right: 23%;
+  }
+  .glide__arrow {
+    top: 85%;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 550px) {
+  h1::before, h1::after {
+    right: 22%;
+  }
+  .findBox .potBox .potTable {
+    grid-template: auto / 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  h1::before, h1::after {
+    right: 20%;
+  }
+}
+
+@media (max-width: 450px) {
+  .board {
+    width: 70%;
+  }
+  h1 {
+    font-size: 24px;
+  }
+  h1::before, h1::after {
+    right: 30%;
+  }
+  h1::before {
+    top: -18px;
+    width: 35px;
+    height: 31px;
+  }
+  h1::after {
+    bottom: 0px;
+    width: 39px;
+    height: 11px;
+  }
+  footer {
+    width: 90%;
+  }
+  footer a {
+    width: 100%;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 400px) {
+  h1::before, h1::after {
+    right: 28%;
+  }
+}
+
+@media (max-width: 370px) {
+  h1::before, h1::after {
+    right: 26%;
+  }
+  .glide--slider {
+    padding-bottom: 20%;
+  }
+}
+
+@media (max-width: 340px) {
+  h1::before, h1::after {
+    right: 24%;
+  }
+}

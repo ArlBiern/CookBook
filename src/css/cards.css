@@ -1,0 +1,29 @@
+/* card box */
+.card, .potTable ul {
+  border-radius: 5px;
+  box-shadow: 0 0 3px var(--detailDark);
+  text-align: center;
+  color: var(--mainLight);
+}
+
+.card {
+  margin: 3%;
+  padding: 10px;
+}
+
+[data-card="mainMeal"], [data-box="mainMeal"] {
+  background-color: var(--sectionA);
+}
+
+[data-card="dessert"], [data-box="dessert"] {
+  background-color: var(--sectionB);
+}
+
+[data-card="cocktail"], [data-box="cocktail"] {
+  background-color: var(--detailDark);
+}
+
+/* pot box table */
+.potTable span:hover {
+  background-color: var(--mainDark);
+}

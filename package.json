@@ -1,0 +1,65 @@
+{
+  "name": "cookbook",
+  "version": "1.0.0",
+  "description": "CodersCamp-Project3",
+  "homepage": "https://github.com/dobrzyckahanna/CookBook",
+  "respository": {
+    "type": "git",
+    "url": "https://github.com/dobrzyckahanna/CookBook.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run dev && npm run serv",
+    "serv": "webpack-dev-server",
+    "dev": "webpack --mode=development",
+    "build": "webpack --mode=production",
+    "test:html": "html-validate src/index.html"
+  },
+  "contributors": [
+    {
+      "name": "freefrogs",
+      "url": "https://github.com/freefrogs"
+    },
+    {
+      "name": "ireshka",
+      "url": "https://github.com/ireshka"
+    },
+    {
+      "name": "Kombajn27",
+      "url": "https://github.com/Kombajn27"
+    }
+  ],
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.7.2",
+    "@babel/plugin-transform-async-to-generator": "^7.7.4",
+    "@babel/preset-env": "^7.7.1",
+    "autoprefixer": "^9.7.2",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.0",
+    "eslint": "^6.7.0",
+    "eslint-loader": "^3.0.2",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "file-loader": "^4.3.0",
+    "html-loader": "^0.5.5",
+    "html-validate": "^2.0.1",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.8.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "postcss-loader": "^3.0.0",
+    "stylelint": "^12.0.0",
+    "stylelint-config-standard": "^19.0.0",
+    "stylelint-webpack-plugin": "^1.1.0",
+    "terser-webpack-plugin": "^2.2.1",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.7.0",
+    "@glidejs/glide": "^3.4.1"
+  }
+}

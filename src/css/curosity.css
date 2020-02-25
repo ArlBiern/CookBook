@@ -1,0 +1,27 @@
+.curosity {
+  max-height: 30vh;
+  overflow: auto;
+  margin-top: 2%;
+  font-style: italic;
+}
+
+.curosity h3 {
+  text-decoration: underline overline;
+}
+
+.curosity p {
+  padding: 10px;
+  text-align: justify;
+}
+
+.curosity::-webkit-scrollbar-thumb {
+	background: var(--sectionB);
+}
+
+.curosity a {
+  font-style: initial;
+  font-weight: 400;
+  float: right;
+  margin: 0 20px;
+  padding: 1%;
+}
