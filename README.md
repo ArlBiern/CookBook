@@ -10,7 +10,7 @@ This app was created as a part of the CodersCamp project (2019, Warsaw group) - 
 **Created by**:
 * **FreeFrogs** - check at [Github](https://github.com/freefrogs)
 * **ireshka** - check at [Github](https://github.com/ireshka)
-* **Kombajn27** - check at [Github](https://github.com/Kombajn27)
+* **ArlBiern** - check at [Github](https://github.com/ArlBiern)
 
 ## Description
 
